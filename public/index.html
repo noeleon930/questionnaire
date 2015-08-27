@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questionnaire</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+
+<body>
+    <p> </p>
+    <div class="row" style="max-width:100%">
+        <div class="medium-1 columns">
+            <p> </p>
+        </div>
+        <div class="medium-10 columns">
+            <div class="row">
+                <div class="medium-9 columns">
+                    <div class="panel">
+                        It has an easy to override visual style, and is appropriately subdued.
+                    </div>
+                </div>
+                <div class="medium-2 columns end">
+                    <div style="padding-top:11px">
+                        <input type="radio" name="pokemon" value="Red" id="pokemonRed">
+                        <label for="pokemonRed">Red</label>
+                        <input type="radio" name="pokemon" value="Blue" id="pokemonBlue">
+                        <label for="pokemonBlue">Blue</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="medium-1 columns">
+            <p> </p>
+        </div>
+    </div>
+    <div id="demo">
+        <ul>
+            <li v-repeat="users" id="item-{{id}}">
+                {{name}} : {{id}}
+            </li>
+        </ul>
+        <!-- <input type="text" v-model="newName" v-on="keydown:addName | key 'enter'"> -->
+        <!-- <pre>
+        	{{ $data }}
+        </pre> -->
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script>
+    $(document).foundation();
+    </script>
+    <script>
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            users: []
+        },
+        ready: function() {
+            $.get('../users', function(users) {
+                var tmp = users.map(function(user, i, arr) {
+                    user.id = user._id;
+                    return user;
+                });
+                vm.users = tmp;
+            });
+        }
+    });
+    </script>
+</body>
+
+</html>
