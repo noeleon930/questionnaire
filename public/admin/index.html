@@ -17,8 +17,11 @@
         </div>
         <div id="questions" class="medium-10 columns">
             <div class="row collapse" v-repeat="questions" id="{{id}}">
-                <div class="medium-10 columns">
-                    <input type="text" placeholder="Question..." v-model="content" v-on="input: update_content($index)">
+                <div class="medium-1 columns">
+                    <label for="input-{{id}}" class="right inline">{{number}}.&nbsp&nbsp</label>
+                </div>
+                <div class="medium-9 columns">
+                    <input id="input-{{id}}" type="text" placeholder="Question..." v-model="content" v-on="input: update_content($index)">
                 </div>
                 <div class="medium-1 columns">
                     <a class="button postfix" style="padding:0px" v-on="click: add_below($index)">Add below</a>
@@ -46,20 +49,56 @@
             questions: []
         },
         ready: function() {
-            $.get('../../questions', function(questions) {
-                var tmp = questions.map(function(question, i, arr) {
-                    question.id = question._id;
-                    question.number = i + 1;
-                    return question;
-                });
-                q.questions = tmp;
-                console.log(tmp);
-            });
+            this.get_all();
         },
         methods: {
+            get_all: function() {
+                $.get('../../questions', function(db_questions) {
+
+                    // add id from _id foreach
+                    var tmp = db_questions.map(function(question, i, arr) {
+                        question.id = question._id;
+                        question.number = i + 1;
+                        return question;
+                    });
+
+                    // if there is no question in DB
+                    if (tmp.length == 0) {
+                        tmp = [{
+                            content: '',
+                            aspect: '',
+                            number: 1
+                        }];
+                        $.ajax({
+                                url: '../../questions/',
+                                method: 'POST',
+                                data: {
+                                    aspect: tmp[0].aspect,
+                                    number: tmp[0].number,
+                                    content: tmp[0].content
+                                }
+                            })
+                            .done(function(data) {
+                                console.log('get_first_one ' + data);
+                                location.reload();
+                            });
+                    }
+
+                    q.questions = tmp;
+
+                    console.log(tmp);
+                });
+            },
+            put_all: function() {
+
+                // call update_content foreach
+                q.questions.forEach(function(question, i, arr) {
+                    q.update_content(i);
+                });
+            },
             add_below: function(n) {
-                console.log('add_below_' + n);
-                // console.log(q.questions[n].content)
+
+                // if we click the add_below at last item
                 if (n + 1 == q.questions.length) {
                     q.questions.push({
                         content: '',
@@ -74,55 +113,56 @@
                     });
                 }
 
-                // q.questions = q.questions.map(function(item, i, arr) {
-                //     item.number = i + 1;
-                // });
+                // n + 1 is new-added's index
+                // n + 2 is new-added's number
 
                 $.ajax({
                         url: '../../questions/',
                         method: 'POST',
                         data: {
                             aspect: q.questions[n + 1].aspect,
-                            number: n + 1,
+                            number: q.questions[n + 1].number,
                             content: q.questions[n + 1].content
                         }
                     })
                     .done(function(data) {
-                        $.get('../../questions', function(questions) {
-                            var tmp = questions.map(function(question, i, arr) {
-                                question.id = question._id;
-                                question.number = i + 1;
-                                return question;
-                            });
-                            q.questions = tmp;
-                        });
+                        q.update_all();
+                        console.log('done_adding' + data);
                     });
             },
             update_content: function(n) {
-                console.log('updating_' + n);
                 $.ajax({
                         url: '../../questions/' + q.questions[n]._id,
                         method: 'PUT',
                         data: {
                             aspect: q.questions[n].aspect,
-                            number: n + 1,
+                            number: q.questions[n].number,
                             content: q.questions[n].content
                         }
                     })
                     .done(function(data) {
-                        console.log(data);
+                        console.log('done_updating ' + data);
                     });
             },
             delete: function(n) {
-                console.log('delete_' + n);
                 $.ajax({
                         url: '../../questions/' + q.questions[n]._id,
                         method: 'DELETE'
                     })
                     .done(function(data) {
-                        q.questions.splice(n, 1);
-                        console.log(data);
+                        q.update_all();
+                        console.log('done_deleting' + data);
                     });
+            },
+            update_all: function() {
+                // var tmp = q.questions.map(function(question, i, arr) {
+                //     question.number = i + 1;
+                //     return question;
+                // });
+                // q.questions = tmp;
+                // console.log(q.questions);
+                this.put_all();
+                this.get_all();
             }
         }
     });
