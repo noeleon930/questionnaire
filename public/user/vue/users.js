@@ -1,0 +1,1 @@
+var global_user_id = global_query['uid'];

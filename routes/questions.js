@@ -46,6 +46,26 @@ router.get('/', function(req, res, next) {
 
 //
 //	GET
+//	aspect's id
+//
+router.get('/aspect/:id', function(req, res, next) {
+
+	var _aspect_id = req.params.id;
+
+	questions
+		.find({
+			aspect: _aspect_id
+		}, {
+			sort: 'number'
+		})
+		.toArray(function(err, rows) {
+			res.json(rows || []);
+		});
+
+});
+
+//
+//	GET
 //	/:id/
 //
 router.get('/:id', function(req, res, next) {

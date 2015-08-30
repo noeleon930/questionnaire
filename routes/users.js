@@ -15,11 +15,19 @@ var ObjectID = require('mongoskin').ObjectID;
 router.post('/', function(req, res, next) {
 
 	var _name = req.body.name;
+	var _email = req.body.email;
+	var _serial = req.body.serial;
+	var _department = req.body.department;
+	var _place = req.body.place;
 	var _password = req.body.password;
 
 	var new_user = {
 		name: _name,
-		password: _password,
+		email : _email,
+		serial : _serial,
+		department : _department,
+		place : _place,
+		password : _password,
 		questions: []
 	};
 
@@ -69,11 +77,20 @@ router.put('/:id', function(req, res, next) {
 	var _id = req.params.id;
 
 	var _name = req.body.name;
+	var _email = req.body.email;
+	var _serial = req.body.serial;
+	var _department = req.body.department;
+	var _place = req.body.place;
 	var _password = req.body.password;
 
 	var patched_user = {
 		name: _name,
-		password: _password
+		email : _email,
+		serial : _serial,
+		department : _department,
+		place : _place,
+		password : _password,
+		questions: []
 	};
 
 	users
@@ -91,7 +108,7 @@ router.put('/:id', function(req, res, next) {
 router.put('/:id/answer', function(req, res, next) {
 
 	var _id = req.params.id;
-	
+
 	var _question_id = req.body.question_id;
 	var _answer = req.body.answer;
 

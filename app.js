@@ -29,7 +29,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/questions', require('./routes/questions'));
-// app.use('/aspects', require('./routes/aspects'));
+app.use('/aspects', require('./routes/aspects'));
 // app.use('/missions', require('./routes/missions'));
 
 // catch 404 and forward to error handler

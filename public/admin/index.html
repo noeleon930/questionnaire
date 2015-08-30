@@ -10,29 +10,125 @@
 </head>
 
 <body>
+    <nav class="top-bar" data-topbar role="navigation" style="height: 200px">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">Control panel</a></h1>
+            </li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a id="bar-aspectsandquestionss" href="#AspectsAndQuestions">Aspects & Questions</a></li>
+                <li><a id="bar-userss" href="#Users">Users</a></li>
+                <li><a id="bar-statisticss" href="#Statistics">Statistics</a></li>
+            </ul>
+        </section>
+    </nav>
     <p> </p>
-    <div class="row" style="max-width:100%">
-        <div class="medium-1 columns">
-            <p> </p>
+    <div id="aspectsandquestionss" class="row" style="max-width:100%">
+        <div class="medium-2 columns">
+            <ul class="side-nav">
+                <div id="aspects">
+                    <a id="{{aspect.id}}" href="#" class="button default expand" v-repeat="aspect in aspects" v-on="click: select_aspect(aspect)">{{aspect.name}}</a>
+                    <a href="#" class="button secondary expand" v-on="click: add_new()">+ New aspect</a>
+                </div>
+            </ul>
         </div>
-        <div id="questions" class="medium-10 columns">
-            <div class="row collapse" v-repeat="questions" id="{{id}}">
-                <div class="medium-1 columns">
-                    <label for="input-{{id}}" class="right inline">{{number}}.&nbsp&nbsp</label>
+        <div class="medium-9 columns end" style="padding-top: 14px;">
+            <div id="aspect-info" class="panel callout radius" style="padding-bottom:0px;">
+                <div class="row collapse">
+                    <div class="medium-2 columns">
+                        <a href="#" class="button disabled prefix">Aspect name</a>
+                    </div>
+                    <div class="medium-10 columns">
+                        <input type="text" placeholder="Aspect name..." v-model="name" v-on="input: update_info()">
+                    </div>
                 </div>
-                <div class="medium-9 columns">
-                    <input id="input-{{id}}" type="text" placeholder="Question..." v-model="content" v-on="input: update_content($index)">
+                <div class="row collapse">
+                    <div class="medium-2 columns">
+                        <a href="#" class="button disabled prefix">Aspect comment</a>
+                    </div>
+                    <div class="medium-10 columns">
+                        <input type="text" placeholder="Aspect comment..." v-model="comment" v-on="input: update_info()">
+                    </div>
                 </div>
-                <div class="medium-1 columns">
-                    <a class="button postfix" style="padding:0px" v-on="click: add_below($index)">Add below</a>
-                </div>
-                <div class="medium-1 columns">
-                    <a class="button postfix alert" style="padding:0px" v-on="click: delete($index)">Delete</a>
+            </div>
+            <div id="questions" class="panel radius" style="padding-bottom:0px;">
+                <div class="row collapse" v-repeat="questions" id="{{id}}">
+                    <div class="medium-1 columns">
+                        <a href="#" class="button disabled prefix">{{number}}.</a>
+                    </div>
+                    <div class="medium-9 columns">
+                        <input id="input-{{id}}" type="text" placeholder="Question..." v-model="content" v-on="input: update_content($index), keydown: add_below($index) | key 'enter'">
+                    </div>
+                    <div class="medium-1 columns">
+                        <a class="button postfix" style="padding:0px" v-on="click: add_below($index)">Add below</a>
+                    </div>
+                    <div class="medium-1 columns">
+                        <a class="button postfix alert" style="padding:0px" v-on="click: delete($index)">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="medium-1 columns">
-            <p> </p>
+    </div>
+    <div id="userss" class="row" style="max-width:90%; display: none">
+        <div id="users" class="panel radius callout" style="padding-left: 10px; padding-right:10px">
+            <!-- <div id="user-{{user.id}}" class="row collapse" v-repeat="user in users"> -->
+            <div class="row collapse">
+                <div class="medium-2 columns">
+                    <span class="prefix">Serial</span>
+                </div>
+                <div class="medium-1 columns">
+                    <span class="prefix">Name</span>
+                </div>
+                <div class="medium-2 columns">
+                    <span class="prefix">Department</span>
+                </div>
+                <div class="medium-2 columns">
+                    <span class="prefix">Place</span>
+                </div>
+                <div class="medium-2 columns">
+                    <span class="prefix">Email</span>
+                </div>
+                <div class="medium-1 columns">
+                    <span class="postfix">Password</span>
+                </div>
+                <div class="medium-2 columns end">
+                </div>
+            </div>
+            <div id="user-{{user.id}}" class="row collapse" v-repeat="user in users">
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.serial" />
+                </div>
+                <div class="medium-1 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.name" />
+                </div>
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.department" />
+                </div>
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.place" />
+                </div>
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.email" />
+                </div>
+                <div class="medium-1 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.password" />
+                </div>
+                <div class="medium-1 columns">
+                    <a class="button postfix" v-on="click: add_below($index)" style="padding:0px; margin-bottom:0px">Add below</a>
+                </div>
+                <div class="medium-1 columns">
+                    <a class="button postfix alert" v-on="click: delete($index)" style="padding:0px; margin-bottom:0px">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="statisticss" class="row" style="max-width:100%; display: none">
+        <div class="medium-12 columns">
+            <div id="statistics">
+                <p>Under construction...</p>
+            </div>
         </div>
     </div>
     <script src="../js/vendor/jquery.js"></script>
@@ -41,130 +137,25 @@
     <script>
     $(document).foundation();
     </script>
+    <script src="vue/aspects.js"></script>
+    <script src="vue/questions.js"></script>
+    <script src="vue/aspects-info.js"></script>
+    <script src="vue/users.js"></script>
     <script>
-    var q = new Vue({
-        el: '#questions',
-        data: {
-            // content: '',
-            questions: []
-        },
-        ready: function() {
-            this.get_all();
-        },
-        methods: {
-            get_all: function() {
-                $.get('../../questions', function(db_questions) {
-
-                    // add id from _id foreach
-                    var tmp = db_questions.map(function(question, i, arr) {
-                        question.id = question._id;
-                        question.number = i + 1;
-                        return question;
-                    });
-
-                    // if there is no question in DB
-                    if (tmp.length == 0) {
-                        tmp = [{
-                            content: '',
-                            aspect: '',
-                            number: 1
-                        }];
-                        $.ajax({
-                                url: '../../questions/',
-                                method: 'POST',
-                                data: {
-                                    aspect: tmp[0].aspect,
-                                    number: tmp[0].number,
-                                    content: tmp[0].content
-                                }
-                            })
-                            .done(function(data) {
-                                console.log('get_first_one ' + data);
-                                location.reload();
-                            });
-                    }
-
-                    q.questions = tmp;
-
-                    console.log(tmp);
-                });
-            },
-            put_all: function() {
-
-                // call update_content foreach
-                q.questions.forEach(function(question, i, arr) {
-                    q.update_content(i);
-                });
-            },
-            add_below: function(n) {
-
-                // if we click the add_below at last item
-                if (n + 1 == q.questions.length) {
-                    q.questions.push({
-                        content: '',
-                        aspect: '',
-                        number: n + 2
-                    });
-                } else {
-                    q.questions.splice(n + 1, 0, {
-                        content: '',
-                        aspect: '',
-                        number: n + 2
-                    });
-                }
-
-                // n + 1 is new-added's index
-                // n + 2 is new-added's number
-
-                $.ajax({
-                        url: '../../questions/',
-                        method: 'POST',
-                        data: {
-                            aspect: q.questions[n + 1].aspect,
-                            number: q.questions[n + 1].number,
-                            content: q.questions[n + 1].content
-                        }
-                    })
-                    .done(function(data) {
-                        q.update_all();
-                        console.log('done_adding' + data);
-                    });
-            },
-            update_content: function(n) {
-                $.ajax({
-                        url: '../../questions/' + q.questions[n]._id,
-                        method: 'PUT',
-                        data: {
-                            aspect: q.questions[n].aspect,
-                            number: q.questions[n].number,
-                            content: q.questions[n].content
-                        }
-                    })
-                    .done(function(data) {
-                        console.log('done_updating ' + data);
-                    });
-            },
-            delete: function(n) {
-                $.ajax({
-                        url: '../../questions/' + q.questions[n]._id,
-                        method: 'DELETE'
-                    })
-                    .done(function(data) {
-                        q.update_all();
-                        console.log('done_deleting' + data);
-                    });
-            },
-            update_all: function() {
-                // var tmp = q.questions.map(function(question, i, arr) {
-                //     question.number = i + 1;
-                //     return question;
-                // });
-                // q.questions = tmp;
-                // console.log(q.questions);
-                this.put_all();
-                this.get_all();
-            }
-        }
+    $('#bar-aspectsandquestionss').on('click', function() {
+        $('#userss').hide(1);
+        $('#statisticss').hide(1);
+        $('#aspectsandquestionss').show(1);
+    });
+    $('#bar-userss').on('click', function() {
+        $('#aspectsandquestionss').hide(1);
+        $('#statisticss').hide(1);
+        $('#userss').show(1);
+    });
+    $('#bar-statisticss').on('click', function() {
+        $('#aspectsandquestionss').hide(1);
+        $('#userss').hide(1);
+        $('#statisticss').show(1);
     });
     </script>
 </body>
