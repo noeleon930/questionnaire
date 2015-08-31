@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Questionnaire</title>
+    <title>問卷調查系統</title>
     <link rel="stylesheet" href="../css/foundation.css" />
     <script>
     var global_query = (function() {
@@ -24,13 +24,56 @@
 
 <body>
     <p> </p>
+    <!--     <div class="row collapse" style="max-width: 95%">
+        <div class="medium-5 columns">
+            
+        </div>
+    </div> -->
+    <div id="personal" class="row collapse" style="max-width: 95%">
+        <div class="medium-2 columns">
+            <h5> </h5>
+        </div>
+        <div class="panel medium-10 columns callout radius end" style="margin-bottom: 0px">
+            <div class="medium-2 columns">
+                <h5> 姓名 : {{name}}</h5>
+            </div>
+            <div class="medium-2 columns">
+                <h5> 序號 : {{serial}}</h5>
+            </div>
+            <div class="medium-2 columns">
+                <h5> 部門 : {{department}}</h5>
+            </div>
+            <div class="medium-2 columns">
+                <h5> 職位 : {{place}}</h5>
+            </div>
+            <div class="medium-3 columns end">
+                <h5> 電子郵件 : {{email}}</h5>
+            </div>
+        </div>
+    </div>
     <div class="row collapse" style="max-width: 95%">
-        <div id="aspects" class="medium-2 columns" style="padding-left:20px">
-            <ul class="side-nav" style="position:fixed">
-                <li v-repeat="aspect in aspects" style="margin:0px">
-                    <a id="aspect-{{aspect.id}}" class="button default" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px"><h5 style="margin:0px">{{aspect.name}}</h5></a>
-                </li>
-            </ul>
+        <div class="medium-2 columns">
+            <div style="position:fixed; width: 14%; top: 2%">
+                <h3>數位轉型問卷</h3>
+                <div id="progress">
+                    <span>總進度 : </span>
+                    <div class="progress small success radius" style="padding-left:0px;height: 120%;">
+                        <span class="meter" style="width: {{total_p}}%; text-align:center">{{total_p}}%</span>
+                    </div>
+                    <span>構面進度 : </span>
+                    <div class="progress small success radius" style="padding-left:0px;height: 120%;">
+                        <span class="meter" style="width: {{aspect_p}}%; text-align:center">{{aspect_p}}%</span>
+                    </div>
+                </div>
+                <ul id="aspects" class="side-nav">
+                    <li v-repeat="aspect in aspects" style="margin:0px">
+                        <a id="aspect-{{aspect.id}}" class="button expand" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px">{{aspect.name}}</a>
+                    </li>
+                    <!-- <li style="margin:0px">
+                        <a class="button alert expand" v-on="click: exit_window()" style="height:60px;margin-top:0px; margin-bottom:14px">離開</a>
+                    </li> -->
+                </ul>
+            </div>
         </div>
         <div class="medium-10 columns">
             <div id="questions">
@@ -41,10 +84,14 @@
                         </div>
                     </div>
                     <div class="medium-2 columns" style="top: 17px; left: 17px;">
-                        <input id="yes-{{question.id}}" style="margin-bottom: 0px" type="radio" value="Yes" v-model="answer" v-on="click: pickYes(question.id)">
-                        <label v-on="click: pickYes(question.id)">Yes</label>
-                        <input id="no-{{question.id}}" style="margin-bottom: 0px" type="radio" value="No" v-model="answer" v-on="click: pickNo(question.id)">
-                        <label v-on="click: pickNo(question.id)">No</label>
+                        <div style="float:left; cursor: pointer;" v-on="click: pickYes(question.id)">
+                            <input id="yes-{{question.id}}" style="margin-bottom: 0px" type="radio" value="Yes" v-model="answer">
+                            <label>Yes</label>
+                        </div>
+                        <div style="cursor: pointer;" v-on="click: pickNo(question.id)">
+                            <input id="no-{{question.id}}" style="margin-bottom: 0px" type="radio" value="No" v-model="answer">
+                            <label>No</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,6 +106,7 @@
     <script src="vue/users.js"></script>
     <script src="vue/aspects.js"></script>
     <script src="vue/questions.js"></script>
+    <script src="vue/progress.js"></script>
 </body>
 
 </html>

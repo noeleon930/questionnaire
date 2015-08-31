@@ -3,9 +3,9 @@ var q = new Vue({
     data: {
         questions: []
     },
-    ready: function() {
-        this.get_all();
-    },
+    // ready: function() {
+    //     this.get_all();
+    // },
     methods: {
         get_all: function() {
             $.get('../../questions/aspect/' + a.current_aspect_id, function(db_questions) {
@@ -41,8 +41,6 @@ var q = new Vue({
                 }
 
                 q.questions = tmp;
-
-                console.log(tmp);
             });
         },
         put_all: function() {

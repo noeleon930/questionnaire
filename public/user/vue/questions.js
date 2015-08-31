@@ -4,7 +4,7 @@ var q = new Vue({
         questions: []
     },
     ready: function() {
-        this.get_all(function(){});
+        this.get_all(function() {});
     },
     methods: {
         get_all: function(callback) {
@@ -37,6 +37,11 @@ var q = new Vue({
                     console.log('done_adding' + data);
                     $('#yes-' + id).prop("checked", true);
                     $('#no-' + id).prop("checked", false);
+
+                    u.load(function() {
+                        prg.total_pc();
+                        prg.aspect_pc();
+                    });
                 });
         },
         pickNo: function(id) {
@@ -52,6 +57,11 @@ var q = new Vue({
                     console.log('done_adding' + data);
                     $('#yes-' + id).prop("checked", false);
                     $('#no-' + id).prop("checked", true);
+                    
+                    u.load(function() {
+                        prg.total_pc();
+                        prg.aspect_pc();
+                    });
                 });
         },
     }

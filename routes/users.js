@@ -23,11 +23,11 @@ router.post('/', function(req, res, next) {
 
 	var new_user = {
 		name: _name,
-		email : _email,
-		serial : _serial,
-		department : _department,
-		place : _place,
-		password : _password,
+		email: _email,
+		serial: _serial,
+		department: _department,
+		place: _place,
+		password: _password,
 		questions: []
 	};
 
@@ -45,7 +45,9 @@ router.post('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
 
 	users
-		.find({})
+		.find({}, {
+			sort: '_id'
+		})
 		.toArray(function(err, rows) {
 			res.json(rows);
 		});
@@ -82,15 +84,19 @@ router.put('/:id', function(req, res, next) {
 	var _department = req.body.department;
 	var _place = req.body.place;
 	var _password = req.body.password;
+	// var _questions = req.body.questions == null ? [] : req.body.questions;
+	// console.log(_questions);
 
 	var patched_user = {
-		name: _name,
-		email : _email,
-		serial : _serial,
-		department : _department,
-		place : _place,
-		password : _password,
-		questions: []
+		$set: {
+			name: _name,
+			email: _email,
+			serial: _serial,
+			department: _department,
+			place: _place,
+			password: _password,
+			// questions: _questions,
+		}
 	};
 
 	users
@@ -124,34 +130,39 @@ router.put('/:id/answer', function(req, res, next) {
 	//
 	users.findById(_id, function(err, rows) {
 
-		var tmp_arr = rows.questions.filter(function(question, i, arr) {
-			if (question.question_id == _question_id)
-				return true;
-			else
-				return false;
-		});
-
-		if (tmp_arr.length > 0) {
-			users
-				.update({
-					_id: ObjectID(_id),
-					'questions.question_id': _question_id
-				}, {
-					$set: {
-						'questions.$.answer': _answer
-					}
-				}, function(err, rows) {
-					res.json(rows || []);
-				});
+		if (rows == null) {
+			res.json([]);
 		} else {
-			users
-				.updateById(_id, {
-					$push: {
-						questions: answered
-					}
-				}, function(err, rows) {
-					res.json(rows || []);
-				});
+
+			var tmp_arr = rows.questions.filter(function(question, i, arr) {
+				if (question.question_id == _question_id)
+					return true;
+				else
+					return false;
+			});
+
+			if (tmp_arr.length > 0) {
+				users
+					.update({
+						_id: ObjectID(_id),
+						'questions.question_id': _question_id
+					}, {
+						$set: {
+							'questions.$.answer': _answer
+						}
+					}, function(err, rows) {
+						res.json(rows || []);
+					});
+			} else {
+				users
+					.updateById(_id, {
+						$push: {
+							questions: answered
+						}
+					}, function(err, rows) {
+						res.json(rows || []);
+					});
+			}
 		}
 	});
 });

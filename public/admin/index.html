@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Questionnaire</title>
+    <title>問卷調查系統 - 管理</title>
     <link rel="stylesheet" href="../css/foundation.css" />
     <script src="../js/vendor/modernizr.js"></script>
 </head>
@@ -13,14 +13,14 @@
     <nav class="top-bar" data-topbar role="navigation" style="height: 200px">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="#">Control panel</a></h1>
+                <h1><a href="#">控制面板</a></h1>
             </li>
         </ul>
         <section class="top-bar-section">
             <ul class="left">
-                <li><a id="bar-aspectsandquestionss" href="#AspectsAndQuestions">Aspects & Questions</a></li>
-                <li><a id="bar-userss" href="#Users">Users</a></li>
-                <li><a id="bar-statisticss" href="#Statistics">Statistics</a></li>
+                <li><a id="bar-aspectsandquestionss" href="#AspectsAndQuestions">構面＆問題</a></li>
+                <li><a id="bar-userss" href="#Users">使用者</a></li>
+                <li><a id="bar-statisticss" href="#Statistics">統計</a></li>
             </ul>
         </section>
     </nav>
@@ -29,8 +29,8 @@
         <div class="medium-2 columns">
             <ul class="side-nav">
                 <div id="aspects">
-                    <a id="{{aspect.id}}" href="#" class="button default expand" v-repeat="aspect in aspects" v-on="click: select_aspect(aspect)">{{aspect.name}}</a>
-                    <a href="#" class="button secondary expand" v-on="click: add_new()">+ New aspect</a>
+                    <a id="{{aspect.id}}" href="#" class="button expand zzz" v-repeat="aspect in aspects" v-on="click: select_aspect(aspect)">{{aspect.name}}</a>
+                    <a href="#" class="button secondary expand" v-on="click: add_new()">+ 新增構面</a>
                 </div>
             </ul>
         </div>
@@ -38,18 +38,18 @@
             <div id="aspect-info" class="panel callout radius" style="padding-bottom:0px;">
                 <div class="row collapse">
                     <div class="medium-2 columns">
-                        <a href="#" class="button disabled prefix">Aspect name</a>
+                        <a href="#" class="button disabled prefix">構面名稱</a>
                     </div>
                     <div class="medium-10 columns">
-                        <input type="text" placeholder="Aspect name..." v-model="name" v-on="input: update_info()">
+                        <input type="text" placeholder="構面名稱..." v-model="name" v-on="input: update_info()">
                     </div>
                 </div>
                 <div class="row collapse">
                     <div class="medium-2 columns">
-                        <a href="#" class="button disabled prefix">Aspect comment</a>
+                        <a href="#" class="button disabled prefix">構面備註</a>
                     </div>
                     <div class="medium-10 columns">
-                        <input type="text" placeholder="Aspect comment..." v-model="comment" v-on="input: update_info()">
+                        <input type="text" placeholder="構面備註..." v-model="comment" v-on="input: update_info()">
                     </div>
                 </div>
             </div>
@@ -62,10 +62,10 @@
                         <input id="input-{{id}}" type="text" placeholder="Question..." v-model="content" v-on="input: update_content($index), keydown: add_below($index) | key 'enter'">
                     </div>
                     <div class="medium-1 columns">
-                        <a class="button postfix" style="padding:0px" v-on="click: add_below($index)">Add below</a>
+                        <a class="button postfix" style="padding:0px" v-on="click: add_below($index)">新增於下</a>
                     </div>
                     <div class="medium-1 columns">
-                        <a class="button postfix alert" style="padding:0px" v-on="click: delete($index)">Delete</a>
+                        <a class="button postfix alert" style="padding:0px" v-on="click: delete($index)">刪除</a>
                     </div>
                 </div>
             </div>
@@ -75,60 +75,95 @@
         <div id="users" class="panel radius callout" style="padding-left: 10px; padding-right:10px">
             <!-- <div id="user-{{user.id}}" class="row collapse" v-repeat="user in users"> -->
             <div class="row collapse">
-                <div class="medium-2 columns">
-                    <span class="prefix">Serial</span>
+                <div class="medium-1 columns">
+                    <span class="prefix">序號</span>
                 </div>
                 <div class="medium-1 columns">
-                    <span class="prefix">Name</span>
-                </div>
-                <div class="medium-2 columns">
-                    <span class="prefix">Department</span>
-                </div>
-                <div class="medium-2 columns">
-                    <span class="prefix">Place</span>
-                </div>
-                <div class="medium-2 columns">
-                    <span class="prefix">Email</span>
+                    <span class="prefix">連結</span>
                 </div>
                 <div class="medium-1 columns">
-                    <span class="postfix">Password</span>
+                    <span class="prefix">姓名</span>
+                </div>
+                <div class="medium-2 columns">
+                    <span class="prefix">單位</span>
+                </div>
+                <div class="medium-2 columns">
+                    <span class="prefix">職稱</span>
+                </div>
+                <div class="medium-2 columns">
+                    <span class="prefix">電子郵件</span>
+                </div>
+                <div class="medium-1 columns">
+                    <span class="postfix">密碼</span>
                 </div>
                 <div class="medium-2 columns end">
                 </div>
             </div>
             <div id="user-{{user.id}}" class="row collapse" v-repeat="user in users">
-                <div class="medium-2 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.serial" />
+                <div class="medium-1 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.serial" />
                 </div>
                 <div class="medium-1 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.name" />
-                </div>
-                <div class="medium-2 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.department" />
-                </div>
-                <div class="medium-2 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.place" />
-                </div>
-                <div class="medium-2 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.email" />
+                    <span class="prefix" style="background: #FFF none repeat scroll 0% 0%;"><a href="{{user.link}}">{{user.i7d}}</a></span>
                 </div>
                 <div class="medium-1 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content($index)" v-model="user.password" />
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.name" />
+                </div>
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.department" />
+                </div>
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.place" />
+                </div>
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.email" />
                 </div>
                 <div class="medium-1 columns">
-                    <a class="button postfix" v-on="click: add_below($index)" style="padding:0px; margin-bottom:0px">Add below</a>
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.password" />
                 </div>
+                <!-- <div class="medium-1 columns">
+                    <a class="button postfix" v-on="click: add_below($index)" style="padding:0px; margin-bottom:0px">新增於下</a>
+                </div> -->
+                <div class="medium-1 columns end">
+                    <a class="button postfix alert" v-on="click: delete($index)" style="padding:0px; margin-bottom:0px">刪除</a>
+                </div>
+            </div>
+            <div class="row collapse">
                 <div class="medium-1 columns">
-                    <a class="button postfix alert" v-on="click: delete($index)" style="padding:0px; margin-bottom:0px">Delete</a>
+                    <a class="button prefix" v-on="click: add_below()" style="padding:0px">+新增使用者</a>
                 </div>
             </div>
         </div>
     </div>
-    <div id="statisticss" class="row" style="max-width:100%; display: none">
-        <div class="medium-12 columns">
-            <div id="statistics">
-                <p>Under construction...</p>
-            </div>
+    <div id="statisticss" class="row" style="max-width:90%; display: none">
+        <div class="medium-2 columns">
+            <ul class="side-nav" style="padding-top:0px">
+                <a id="statistics-apects-{{aspect.id}}" href="#" class="button expand zzzx" v-repeat="aspect in aspects" v-on="click: select_aspect(aspect)">{{aspect.name}}</a>
+            </ul>
+        </div>
+        <div class="medium-10 columns">
+            <table>
+                <thead>
+                    <tr>
+                        <th>題號</th>
+                        <th>是(%)</th>
+                        <th>否(%)</th>
+                        <th>總人數</th>
+                        <th>缺答人數</th>
+                        <th>缺答率(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-repeat="question in questions">
+                        <td>{{question.number}}</td>
+                        <td>{{question.yes_p.toFixed(2)}} &nbsp%</td>
+                        <td>{{question.no_p.toFixed(2)}} &nbsp%</td>
+                        <td>{{question.yes + question.no + question.unknown}}</td>
+                        <td>{{question.unknown}}</td>
+                        <td>{{question.unknown_p.toFixed(2)}} &nbsp%</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="../js/vendor/jquery.js"></script>
@@ -141,6 +176,7 @@
     <script src="vue/questions.js"></script>
     <script src="vue/aspects-info.js"></script>
     <script src="vue/users.js"></script>
+    <script src="vue/statistics.js"></script>
     <script>
     $('#bar-aspectsandquestionss').on('click', function() {
         $('#userss').hide(1);

@@ -1,3 +1,4 @@
+// console.fuck = (a) => console.log("fuck " + a);
 var u = new Vue({
 	el: '#users',
 	data: {
@@ -12,6 +13,12 @@ var u = new Vue({
 
 				var tmp = db_users.map(function(user, i, arr) {
 					user.id = user._id;
+					user.i7d = user.id.substring(0, 7);
+					user.link = '../user?uid=' + user.id;
+					if (user.serial == '' || user.serial == undefined) {
+						user.link = '';
+						user.i7d = '';
+					}
 					return user;
 				});
 
@@ -51,45 +58,30 @@ var u = new Vue({
 
 			// call update_content foreach
 			u.users.forEach(function(user, i, arr) {
-				u.update_content(i);
+				u.update_content(user);
 			});
 		},
-		add_below: function(n) {
+		add_below: function() {
 
-			// if we click the add_below at last item
-			if (n + 1 == u.users.length) {
-				u.users.push({
-					name: '',
-					email: '',
-					serial: '',
-					department: '',
-					place: '',
-					password: ''
-				});
-			} else {
-				u.users.splice(n + 1, 0, {
-					name: '',
-					email: '',
-					serial: '',
-					department: '',
-					place: '',
-					password: ''
-				});
-			}
-
-			// n + 1 is new-added's index
-			// n + 2 is new-added's number
+			u.users.push({
+				name: '',
+				email: '',
+				serial: '',
+				department: '',
+				place: '',
+				password: ''
+			});
 
 			$.ajax({
 					url: '../../users/',
 					method: 'POST',
 					data: {
-						name: u.users[n + 1].name,
-						email: u.users[n + 1].email,
-						serial: u.users[n + 1].serial,
-						department: u.users[n + 1].department,
-						place: u.users[n + 1].place,
-						password: u.users[n + 1].password
+						name: u.users[u.users.length - 1].name,
+						email: u.users[u.users.length - 1].email,
+						serial: u.users[u.users.length - 1].serial,
+						department: u.users[u.users.length - 1].department,
+						place: u.users[u.users.length - 1].place,
+						password: u.users[u.users.length - 1].password
 					}
 				})
 				.done(function(data) {
@@ -97,21 +89,26 @@ var u = new Vue({
 					console.log('done_adding' + data);
 				});
 		},
-		update_content: function(n) {
+		update_content: function(user) {
 			$.ajax({
-					url: '../../users/' + u.users[n]._id,
+					url: '../../users/' + user._id,
 					method: 'PUT',
 					data: {
-						name: u.users[n].name,
-						email: u.users[n].email,
-						serial: u.users[n].serial,
-						department: u.users[n].department,
-						place: u.users[n].place,
-						password: u.users[n].password
+						name: user.name,
+						email: user.email,
+						serial: user.serial,
+						department: user.department,
+						place: user.place,
+						password: user.password,
 					}
 				})
 				.done(function(data) {
-					console.log('done_updating ' + data);
+					if (user.id == undefined) {
+						// console.fuck('ME');
+					} else {
+						user.i7d = user.id.substring(0, 7);
+						user.link = '../user?uid=' + user.id;
+					}
 				});
 		},
 		delete: function(n) {

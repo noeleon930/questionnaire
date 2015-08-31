@@ -6,16 +6,21 @@ var a = new Vue({
     },
     ready: function() {
         this.current_aspect_id = '';
-        this.get_all();
+        this.get_all(function() {
+            a.select_aspect(a.aspects[0]);
+            $('#' + a.aspects[0]._id).addClass('secondary');
+        });
     },
     methods: {
-        get_all: function() {
+        get_all: function(callback) {
             $.get('../../aspects', function(db_aspects) {
                 var tmp = db_aspects.map(function(aspect, i, arr) {
                     aspect.id = aspect._id;
                     return aspect;
                 });
                 a.aspects = tmp;
+
+                callback();
             });
         },
         put_all: function() {
@@ -57,14 +62,18 @@ var a = new Vue({
                 });
         },
         select_aspect: function(aspect) {
-            a.current_aspect_id = aspect.id;
+            a.current_aspect_id = aspect._id;
             ai.name = aspect.name;
             ai.comment = aspect.comment;
             q.get_all();
+            setTimeout(function() {
+                $('.zzz').removeClass('secondary');
+                $('#' + aspect._id).addClass('secondary');
+            }, 100);
         },
         update_all: function() {
             this.put_all();
-            this.get_all();
+            this.get_all(function() {});
         }
     }
 });
