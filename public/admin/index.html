@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>問卷調查系統 - 管理</title>
     <link rel="stylesheet" href="../css/foundation.css" />
-    <script src="../js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="../css/app.css" />
+    <script>
+    if (false || !!document.documentMode) {
+        alert('此系統不支援IE，請使用Chrome 或 Firefox');
+        window.location.href = "https://www.google.com.tw/chrome/browser/desktop/";
+    }
+    </script> 
 </head>
 
 <body>
@@ -142,19 +148,19 @@
             </ul>
         </div>
         <div class="medium-10 columns">
-            <table>
+            <table style="-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;">
                 <thead>
                     <tr>
-                        <th>題號</th>
-                        <th>是(%)</th>
-                        <th>否(%)</th>
-                        <th>總人數</th>
-                        <th>缺答人數</th>
-                        <th>缺答率(%)</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('number')">題號</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('yes_p')">是(%)</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('no_p')">否(%)</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('total')">總人數</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('void')">缺答人數</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('void_p')">缺答率(%)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-repeat="question in questions">
+                    <tr id="quesiton-row-{{question.id}}" v-repeat="question in questions" v-on="mouseover: mouseOver(question), mouseout: mouseOut(question)">
                         <td>{{question.number}}</td>
                         <td>{{question.yes_p.toFixed(2)}} &nbsp%</td>
                         <td>{{question.no_p.toFixed(2)}} &nbsp%</td>
@@ -166,6 +172,7 @@
             </table>
         </div>
     </div>
+    <script src="../js/vendor/modernizr.js"></script>
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/foundation.min.js"></script>
     <script src="../js/vue.min.js"></script>

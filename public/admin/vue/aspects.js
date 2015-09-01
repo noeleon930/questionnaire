@@ -4,7 +4,7 @@ var a = new Vue({
         aspects: [],
         current_aspect_id: ''
     },
-    ready: function() {
+    compiled: function() {
         this.current_aspect_id = '';
         this.get_all(function() {
             a.select_aspect(a.aspects[0]);

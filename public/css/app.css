@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 500;
+    src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot);
+    src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot?#iefix) format('embedded-opentype'), url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff2) format('woff2'), url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff) format('woff'), url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.ttf) format('truetype');
+}
+
+body,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+div,
+span,
+.button {
+    font-family: 'Droid Sans Fallback', 'Helvetica', Arial, serif;
+}
+
+.overedTableRow {
+    background-color: #A9E1E1;
+}
+
+table tr:nth-of-type(2n).overedTableRow {
+    background-color: #A9E1E1;
+}

@@ -3,9 +3,17 @@ var statistics = new Vue({
 	data: {
 		current_aspect_id: '',
 		aspects: [],
-		questions: []
+		questions: [],
+		sortRule: {
+			'number': false,
+			'yes_p': false,
+			'no_p': false,
+			'total': false,
+			'void': false,
+			'void_p': false,
+		}
 	},
-	ready: function() {
+	compiled: function() {
 		this.get_all_aspects();
 	},
 	methods: {
@@ -87,5 +95,70 @@ var statistics = new Vue({
 				});
 			});
 		},
+		sortBy: function(target) {
+			switch (target) {
+				case 'number':
+					this.questions.sort(function(aa, bb) {
+						if (statistics.sortRule[target]) {
+							return aa.number - bb.number;
+						} else {
+							return bb.number - aa.number;
+						}
+					});
+					break;
+				case 'yes_p':
+					this.questions.sort(function(aa, bb) {
+						if (statistics.sortRule[target]) {
+							return aa.yes_p - bb.yes_p;
+						} else {
+							return bb.yes_p - aa.yes_p;
+						}
+					});
+					break;
+				case 'no_p':
+					this.questions.sort(function(aa, bb) {
+						if (statistics.sortRule[target]) {
+							return aa.no_p - bb.no_p;
+						} else {
+							return bb.no_p - aa.no_p;
+						}
+					});
+					break;
+				case 'total':
+					this.questions.sort(function(aa, bb) {
+						if (statistics.sortRule[target]) {
+							return (aa.yes + aa.no + aa.unknown) - (bb.yes + bb.no + bb.unknown);
+						} else {
+							return (bb.yes + bb.no + bb.unknown) - (aa.yes + aa.no + aa.unknown);
+						}
+					});
+					break;
+				case 'void':
+					this.questions.sort(function(aa, bb) {
+						if (statistics.sortRule[target]) {
+							return aa.unknown - bb.unknown;
+						} else {
+							return bb.unknown - aa.unknown;
+						}
+					});
+					break;
+				case 'void_p':
+					this.questions.sort(function(aa, bb) {
+						if (statistics.sortRule[target]) {
+							return aa.unknown_p - bb.unknown_p;
+						} else {
+							return bb.unknown_p - aa.unknown_p;
+						}
+					});
+					break;
+			}
+			statistics.sortRule[target] = !statistics.sortRule[target];
+		},
+		mouseOver: function(question) {
+			$('#quesiton-row-' + question.id).addClass('overedTableRow');
+		},
+		mouseOut: function(question) {
+			$('#quesiton-row-' + question.id).removeClass('overedTableRow');
+		}
 	}
 });

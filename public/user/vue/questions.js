@@ -19,7 +19,7 @@ var q = new Vue({
 
                 q.questions = tmp;
 
-                console.log(tmp);
+                // console.log(tmp);
 
                 callback();
             });
