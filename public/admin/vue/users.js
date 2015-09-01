@@ -15,7 +15,7 @@ var u = new Vue({
 					user.id = user._id;
 					user.i7d = user.id.substring(0, 7);
 					user.link = '../user?uid=' + user.id;
-					if (user.serial == '' || user.serial == undefined) {
+					if (user.serial == '' || user.serial == undefined || user.name == '' || user.name == undefined) {
 						user.link = '';
 						user.i7d = '';
 					}

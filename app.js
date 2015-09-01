@@ -27,10 +27,21 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // routers
 app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
-app.use('/questions', require('./routes/questions'));
-app.use('/aspects', require('./routes/aspects'));
-// app.use('/statistics', require('./routes/statistics'));
+
+app.use('/users', function(req, res, next) {
+	console.log('Request URL:', req.originalUrl);
+	next();
+}, require('./routes/users'));
+
+app.use('/questions', function(req, res, next) {
+	console.log('Request URL:', req.originalUrl);
+	next();
+}, require('./routes/questions'));
+
+app.use('/aspects', function(req, res, next) {
+	console.log('Request URL:', req.originalUrl);
+	next();
+}, require('./routes/aspects'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

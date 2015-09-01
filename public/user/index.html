@@ -23,83 +23,86 @@
 </head>
 
 <body>
-    <p> </p>
-    <!--     <div class="row collapse" style="max-width: 95%">
+    <div style="font-family: Arial, '微軟正黑體'">
+        <p> </p>
+        <!--     <div class="row collapse" style="max-width: 95%">
         <div class="medium-5 columns">
             
         </div>
     </div> -->
-    <div id="personal" class="row collapse" style="max-width: 95%">
-        <div class="medium-2 columns">
-            <h5> </h5>
-        </div>
-        <div class="panel medium-10 columns callout radius end" style="margin-bottom: 0px">
+        <div id="personal" class="row collapse" style="max-width: 95%">
             <div class="medium-2 columns">
-                <h5> 姓名 : {{name}}</h5>
+                <h5> </h5>
             </div>
-            <div class="medium-2 columns">
-                <h5> 序號 : {{serial}}</h5>
-            </div>
-            <div class="medium-2 columns">
-                <h5> 部門 : {{department}}</h5>
-            </div>
-            <div class="medium-2 columns">
-                <h5> 職位 : {{place}}</h5>
-            </div>
-            <div class="medium-3 columns end">
-                <h5> 電子郵件 : {{email}}</h5>
-            </div>
-        </div>
-    </div>
-    <div class="row collapse" style="max-width: 95%">
-        <div class="medium-2 columns">
-            <div style="position:fixed; width: 14%; top: 2%">
-                <h3>數位轉型問卷</h3>
-                <div id="progress">
-                    <span>總進度 : </span>
-                    <div class="progress small success radius" style="padding-left:0px;height: 120%;">
-                        <span class="meter" style="width: {{total_p}}%; text-align:center">{{total_p}}%</span>
-                    </div>
-                    <span>構面進度 : </span>
-                    <div class="progress small success radius" style="padding-left:0px;height: 120%;">
-                        <span class="meter" style="width: {{aspect_p}}%; text-align:center">{{aspect_p}}%</span>
-                    </div>
+            <div class="panel medium-10 columns callout radius end" style="margin-bottom: 0px">
+                <div class="medium-2 columns">
+                    <h5> 姓名 : {{name}}</h5>
                 </div>
-                <ul id="aspects" class="side-nav">
-                    <li v-repeat="aspect in aspects" style="margin:0px">
-                        <a id="aspect-{{aspect.id}}" class="button expand" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px">{{aspect.name}}</a>
-                    </li>
-                    <!-- <li style="margin:0px">
+                <div class="medium-2 columns">
+                    <h5> 員工編號 : {{serial}}</h5>
+                </div>
+                <div class="medium-2 columns">
+                    <h5> 單位名稱 : {{department}}</h5>
+                </div>
+                <div class="medium-2 columns">
+                    <h5> 職稱 : {{place}}</h5>
+                </div>
+                <div class="medium-3 columns end">
+                    <h5> 電子信箱 : {{email}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row collapse" style="max-width: 95%">
+            <div class="medium-2 columns">
+                <div style="position:fixed; width: 14%; top: 2%">
+                    <h3>數位轉型問卷</h3>
+                    <div id="progress">
+                        <span>總進度 : </span>
+                        <div class="progress small success radius" style="padding-left:0px;height: 120%;">
+                            <span class="meter" style="width: {{total_p}}%; text-align:center">{{total_p}}%</span>
+                        </div>
+                        <span>構面進度 : </span>
+                        <div class="progress small success radius" style="padding-left:0px;height: 120%;">
+                            <span class="meter" style="width: {{aspect_p}}%; text-align:center">{{aspect_p}}%</span>
+                        </div>
+                    </div>
+                    <ul id="aspects" class="side-nav">
+                        <li v-repeat="aspect in aspects" style="margin:0px">
+                            <a id="aspect-{{aspect.id}}" class="button expand" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px">{{aspect.name}}</a>
+                        </li>
+                        <!-- <li style="margin:0px">
                         <a class="button alert expand" v-on="click: exit_window()" style="height:60px;margin-top:0px; margin-bottom:14px">離開</a>
                     </li> -->
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="medium-10 columns">
-            <div id="questions">
-                <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
-                    <div class="medium-10 columns">
-                        <div class="panel" style="margin:0px">
-                            <h5>{{question.number}}.&nbsp&nbsp{{question.content}}</h5>
+            <div class="medium-10 columns">
+                <div id="questions">
+                    <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
+                        <div class="medium-10 columns">
+                            <div class="panel" style="margin:0px">
+                                <h5>{{question.number}}.&nbsp&nbsp{{question.content}}</h5>
+                            </div>
+                        </div>
+                        <div class="medium-2 columns" style="top: 17px; left: 17px;">
+                            <div style="float:left; cursor: pointer;" v-on="click: pickYes(question.id)">
+                                <input id="yes-{{question.id}}" style="margin-bottom: 0px" type="radio" value="Yes" v-model="answer">
+                                <label>是</label>
+                            </div>
+                            <div style="cursor: pointer;" v-on="click: pickNo(question.id)">
+                                <input id="no-{{question.id}}" style="margin-bottom: 0px" type="radio" value="No" v-model="answer">
+                                <label>否</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="medium-2 columns" style="top: 17px; left: 17px;">
-                        <div style="float:left; cursor: pointer;" v-on="click: pickYes(question.id)">
-                            <input id="yes-{{question.id}}" style="margin-bottom: 0px" type="radio" value="Yes" v-model="answer">
-                            <label>Yes</label>
-                        </div>
-                        <div style="cursor: pointer;" v-on="click: pickNo(question.id)">
-                            <input id="no-{{question.id}}" style="margin-bottom: 0px" type="radio" value="No" v-model="answer">
-                            <label>No</label>
-                        </div>
-                    </div>
+                    <p> </p>
                 </div>
             </div>
         </div>
     </div>
     <script src="../js/vendor/jquery.js"></script>
-    <script src="../js/foundation.min.js"></script>
     <script src="../js/vue.min.js"></script>
+    <script src="../js/foundation.min.js"></script>
     <script>
     $(document).foundation();
     </script>

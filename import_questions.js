@@ -3,16 +3,45 @@ var questions = require('./database/questions');
 var fs = require('fs');
 var csv = require('csv-parser');
 
-var aspect_id_pair = {
-	1: "55e33f2e050feb6f0474be09",
-	2: "55e33f30050feb6f0474be0b",
-	3: "55e33f33050feb6f0474be0d",
-	4: "55e33f39050feb6f0474be0f",
-	5: "55e33f49050feb6f0474be11",
-	6: "55e33f4e050feb6f0474be13",
-	7: "55e33f51050feb6f0474be15",
-	8: "55e33f57050feb6f0474be17",
-};
+var aspect_id_pair = [{
+	"_id": "z"
+}, {
+	"_id": "55e4fa5013248c360f4e9f9d",
+	"name": "願景及策略",
+	"comment": ""
+}, {
+	"_id": "55e4fa7e13248c360f4e9fa0",
+	"name": "公司治理",
+	"comment": ""
+}, {
+	"_id": "55e4fa8a13248c360f4e9fa2",
+	"name": "組織人力",
+	"comment": ""
+}, {
+	"_id": "55e4fa9113248c360f4e9fa4",
+	"name": "科技應用",
+	"comment": ""
+}, {
+	"_id": "55e4fa9913248c360f4e9fa6",
+	"name": "資料分析",
+	"comment": ""
+}, {
+	"_id": "55e4fa9d13248c360f4e9fa8",
+	"name": "數位風險管理",
+	"comment": ""
+}, {
+	"_id": "55e4faa613248c360f4e9faa",
+	"name": "客戶經營",
+	"comment": ""
+}, {
+	"_id": "55e4faad13248c360f4e9fac",
+	"name": "通路體驗",
+	"comment": ""
+}].map(function(item, i, arr) {
+	return item._id;
+});
+
+console.log(aspect_id_pair);
 
 
 fs.createReadStream('1.csv')
