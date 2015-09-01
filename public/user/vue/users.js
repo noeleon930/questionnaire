@@ -10,12 +10,14 @@ var u = new Vue({
 		questions: [],
 	},
 	ready: function() {
-		this.load(function(){});
+		this.load(function() {
+			$('#the_title').html('數位轉型問卷 - ' + u.name);
+		});
 	},
 	methods: {
 		load: function(callback) {
 			$.get('../../users/' + global_user_id, function(user) {
-				
+
 				u.name = user.name || '';
 				u.email = user.email || '';
 				u.serial = user.serial || '';

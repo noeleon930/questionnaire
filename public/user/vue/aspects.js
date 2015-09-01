@@ -27,9 +27,11 @@ var a = new Vue({
 						if (question.answer == 'Yes') {
 							$('#yes-' + question.question_id).prop("checked", true);
 							$('#no-' + question.question_id).prop("checked", false);
+							$('#question-' + question.question_id + ' > div > div.panel').addClass('answered');
 						} else if (question.answer == 'No') {
 							$('#yes-' + question.question_id).prop("checked", false);
 							$('#no-' + question.question_id).prop("checked", true);
+							$('#question-' + question.question_id + ' > div > div.panel').addClass('answered');
 						}
 					});
 

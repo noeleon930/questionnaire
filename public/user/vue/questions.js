@@ -41,6 +41,7 @@ var q = new Vue({
                     u.load(function() {
                         prg.total_pc();
                         prg.aspect_pc();
+                        $('#question-' + id + ' > div > div.panel').addClass('answered');
                     });
                 });
         },
@@ -61,6 +62,7 @@ var q = new Vue({
                     u.load(function() {
                         prg.total_pc();
                         prg.aspect_pc();
+                        $('#question-' + id + ' > div > div.panel').addClass('answered');
                     });
                 });
         },
