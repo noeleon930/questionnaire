@@ -26,7 +26,7 @@ var prg = new Vue({
 				});
 			});
 
-			this.aspect_p = Math.floor(tmp / q.questions.length * 100);
+			this.aspect_p = Math.floor(tmp / q.questions.length * 100) || 0;
 		}
 	}
 });
