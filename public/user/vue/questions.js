@@ -30,7 +30,8 @@ var q = new Vue({
                     method: 'PUT',
                     data: {
                         answer: 'Yes',
-                        question_id: id
+                        question_id: id,
+                        aspect_id: a.current_aspect_id
                     }
                 })
                 .done(function(data) {
@@ -51,14 +52,15 @@ var q = new Vue({
                     method: 'PUT',
                     data: {
                         answer: 'No',
-                        question_id: id
+                        question_id: id,
+                        aspect_id: a.current_aspect_id
                     }
                 })
                 .done(function(data) {
                     console.log('done_adding' + data);
                     $('#yes-' + id).prop("checked", false);
                     $('#no-' + id).prop("checked", true);
-                    
+
                     u.load(function() {
                         prg.total_pc();
                         prg.aspect_pc();

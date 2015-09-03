@@ -7,12 +7,12 @@ var prg = new Vue({
 	},
 	ready: function() {
 		$.get('../../questions', function(db_questions) {
-			prg.total_num = db_questions.length;
+			prg.total_num = db_questions.length - 1;
 		});
 	},
 	methods: {
 		total_pc: function() {
-			this.total_p = Math.floor(u.questions.length / prg.total_num * 100);
+			this.total_p = Math.floor(u.questions.length / prg.total_num * 100) > 100 ? 100 : Math.floor(u.questions.length / prg.total_num * 100);
 		},
 		aspect_pc: function() {
 

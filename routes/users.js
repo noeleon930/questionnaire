@@ -116,10 +116,12 @@ router.put('/:id/answer', function(req, res, next) {
 	var _id = req.params.id;
 
 	var _question_id = req.body.question_id;
+	var _aspect_id = req.body.aspect_id;
 	var _answer = req.body.answer;
 
 	var answered = {
 		question_id: _question_id,
+		aspect_id: _aspect_id,
 		answer: _answer
 	};
 

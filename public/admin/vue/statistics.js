@@ -52,6 +52,7 @@ var statistics = new Vue({
 							var ttmp = {
 								id: question.id,
 								number: question.number,
+								trimmed_question: (question.content.length >= 30) ? question.content.substring(0, 27) + '...' : question.content,
 								yes: 0,
 								no: 0,
 								unknown: 0

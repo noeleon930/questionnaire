@@ -15,11 +15,11 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json({
-	limit: '64mb'
+	limit: '1mb'
 }));
 app.use(bodyParser.urlencoded({
 	extended: true,
-	limit: '64mb'
+	limit: '1mb'
 }));
 app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
@@ -33,6 +33,8 @@ app.use('/users', require('./routes/users'));
 app.use('/questions', require('./routes/questions'));
 
 app.use('/aspects', require('./routes/aspects'));
+
+app.use('/mail', require('./routes/mail'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
