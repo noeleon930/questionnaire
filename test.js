@@ -1,18 +1,11 @@
-var fs = require('fs');
-var j2xls = require('json2xls-xml')({pretty: true});
+var x = in$('1', [1, 2, 3, 4, 5, 6, 7, 8]);
 
-var doc = {
-    Foo: [
-        {firstname: 'John', lastname: 'Doo', numbers: [1, 2, 3, 4, 5, 6]}
-        , {firstname: 'Foo', lastname: 'Bar', age: 23, weight: 25.7876, birth: new Date()}
-    ]
-    , Bar: [
-        {firstname: 'Rene', lastname: 'Malin'}
-        , {firstname: 'Foo', lastname: 'foobar', age: 73, weight: 22225.33, birth: new Date()}
-    ]
-};
+function in$(x, xs) {
+	var i = -1,
+		l = xs.length >>> 0;
+	while (++i < l)
+		if (x === xs[i]) return true;
+	return false;
+}
 
-// console.log(j2xls(doc));
-fs.writeFile('test.xls', j2xls(doc), function (err) {
-    console.log(err);
-});
+console.log(x);

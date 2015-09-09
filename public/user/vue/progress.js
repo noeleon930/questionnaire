@@ -5,14 +5,36 @@ var prg = new Vue({
 		total_p: 0,
 		aspect_p: 0
 	},
-	ready: function() {
+	compiled: function() {
 		$.get('../../questions', function(db_questions) {
-			prg.total_num = db_questions.length - 1;
+
+			setTimeout(function() {
+				prg.total_num = db_questions
+					.filter(function(question) {
+						return ($.inArray(question.aspect, group_permission) != -1);
+					})
+					.length;
+			}, 100);
+
 		});
 	},
 	methods: {
 		total_pc: function() {
-			this.total_p = Math.floor(u.questions.length / prg.total_num * 100) > 100 ? 100 : Math.floor(u.questions.length / prg.total_num * 100);
+			this.total_p = Math.floor(u.questions.length / prg.total_num * 100) > 100 ? 0 : Math.floor(u.questions.length / prg.total_num * 100);
+			if (this.total_p + 1 != this.total_p + 1) {
+				this.total_p = 0;
+			}
+
+			$.ajax({
+					url: '../../users/' + global_user_id + '/total_p',
+					method: 'PUT',
+					data: {
+						total_p: this.total_p
+					}
+				})
+				.done(function(data) {
+					console.log('done_updating total_p' + data);
+				});
 		},
 		aspect_pc: function() {
 

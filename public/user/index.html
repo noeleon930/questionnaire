@@ -7,30 +7,15 @@
     <title id="the_title"></title>
     <link rel="stylesheet" href="../css/foundation.css" />
     <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script>
-    if (false || !!document.documentMode) {
-        alert('此系統不支援IE，請使用Chrome 或 Firefox');
-        window.location.href = "https://www.google.com.tw/chrome/browser/desktop/";
-    }
-    </script>
-    <script>
-    var global_query = (function() {
-        var vars = [],
-            hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for (var i = 0; i < hashes.length; i++) {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    })();
+    eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3 c=(e(){3 4=[],2;3 5=d.8.9.f(d.8.9.h(\'?\')+1).a(\'&\');j(3 i=0;i<5.g;i++){2=5[i].a(\'=\');4.k(2[0]);4[2[0]]=2[1]}l 4})();3 6=p("請輸入密碼","");b(6!=o){b(6!=c[\'m\'].n(0,7)){q.8.9=""}}',27,27,'||hash|var|vars|hashes|input_result||location|href|split|if|global_query|window|function|slice|length|indexOf||for|push|return|uid|substring|null|prompt|document'.split('|'),0,{}))
     </script>
     <script src="../js/vendor/modernizr.js"></script>
 </head>
 
 <body>
-    <div>
+    <div id="the_user_content">
         <p> </p>
         <!--     <div class="row collapse" style="max-width: 95%">
         <div class="medium-5 columns">
@@ -46,7 +31,7 @@
                     <div class="medium-2 columns">
                         <h5> 姓名 : {{name}}</h5>
                     </div>
-                  <!--   <div class="medium-2 columns">
+                    <!--   <div class="medium-2 columns">
                         <h5> 員工編號 : {{serial}}</h5>
                     </div> -->
                     <div class="medium-3 columns">
@@ -109,7 +94,12 @@
             </div>
         </div>
     </div>
-    <script src="../js/vendor/jquery.js"></script>
+    <div style="position:fixed; top:88%; left:93%">
+        <span style="float:left">回到最上層&nbsp&nbsp</span>
+        <i id="gotop" class="fa fa-arrow-circle-up" style="font-size:40px; cursor:pointer"></i>
+    </div>
+    <!-- // <script src="../js/vendor/jquery.js"></script> -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="../js/vue.min.js"></script>
     <script src="../js/foundation.min.js"></script>
     <script>
@@ -119,6 +109,11 @@
     <script src="vue/aspects.js"></script>
     <script src="vue/questions.js"></script>
     <script src="vue/progress.js"></script>
+    <script>
+    $('#gotop').click(function() {
+        $('html, body').scrollTop(0);
+    });
+    </script>
 </body>
 
 </html>

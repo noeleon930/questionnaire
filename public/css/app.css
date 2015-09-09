@@ -30,3 +30,7 @@ table tr:nth-of-type(2n).overedTableRow {
 div.panel.answered {
     background: #43AC6A none repeat scroll 0% 0%;
 }
+
+td.group-aspect-td {
+    background-color: #A9E1E1;
+}

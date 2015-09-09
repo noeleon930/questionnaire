@@ -1,3 +1,4 @@
+var group_permission = [];
 var a = new Vue({
 	el: '#aspects',
 	data: {
@@ -8,15 +9,36 @@ var a = new Vue({
 		this.current_aspect_id = '';
 		this.get_all();
 	},
+	computed: {
+		user_group: function() {
+			return u.group;
+		}
+	},
 	methods: {
 		get_all: function() {
 			$.get('../../aspects', function(db_aspects) {
-				var tmp = db_aspects.map(function(aspect, i, arr) {
-					aspect.id = aspect._id;
-					return aspect;
+				$.get('../../groups/' + a.user_group, function(db_group) {
+					group_permission = db_group
+						.aspects
+						.filter(function(_aspect) {
+							return _aspect.checked == 'true';
+						})
+						.map(function(_aspect, i, arr) {
+							return _aspect.id;
+						});
+
+					var tmp = db_aspects
+						.map(function(aspect, i, arr) {
+							aspect.id = aspect._id;
+							return aspect;
+						})
+						.filter(function(aspect) {
+							return ($.inArray(aspect.id, group_permission) != -1);
+						});
+
+					a.aspects = tmp;
+					a.select_aspect(a.aspects[0]);
 				});
-				a.aspects = tmp;
-				a.select_aspect(a.aspects[0]);
 			});
 		},
 		select_aspect: function(aspect) {
@@ -35,7 +57,9 @@ var a = new Vue({
 						}
 					});
 
-					prg.total_pc();
+					setTimeout(function() {
+						prg.total_pc();
+					}, 150);
 					prg.aspect_pc();
 
 					$('html, body').scrollTop(0);

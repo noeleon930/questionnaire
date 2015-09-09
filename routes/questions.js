@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
 
 	questions
 		.find({}, {
-			sort: 'number'
+			sort: 'aspect'
 		})
 		.toArray(function(err, rows) {
 			res.json(rows);

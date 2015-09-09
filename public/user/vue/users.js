@@ -7,6 +7,7 @@ var u = new Vue({
 		serial: '',
 		department: '',
 		place: '',
+		group: '',
 		questions: [],
 	},
 	ready: function() {
@@ -23,6 +24,7 @@ var u = new Vue({
 				u.serial = user.serial || '';
 				u.department = user.department || '';
 				u.place = user.place || '';
+				u.group = user.group || '';
 				u.questions = user.questions;
 
 				callback();

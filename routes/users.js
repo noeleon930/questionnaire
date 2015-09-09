@@ -20,6 +20,8 @@ router.post('/', function(req, res, next) {
 	var _department = req.body.department;
 	var _place = req.body.place;
 	var _password = req.body.password;
+	var _group = req.body.group;
+	var _total_p = 0;
 
 	var new_user = {
 		name: _name,
@@ -28,6 +30,8 @@ router.post('/', function(req, res, next) {
 		department: _department,
 		place: _place,
 		password: _password,
+		group: _group,
+		total_p: _total_p,
 		questions: []
 	};
 
@@ -70,6 +74,27 @@ router.get('/:id', function(req, res, next) {
 });
 
 //
+//	GET
+//	/:id/
+//
+router.get('/:id/reset_questions', function(req, res, next) {
+
+	var _id = req.params.id;
+
+	var patched_user = {
+		$set: {
+			questions: [],
+		}
+	};
+
+	users
+		.updateById(_id, patched_user, function(err, rows) {
+			res.json(rows || []);
+		});
+
+});
+
+//
 //	PUT
 //	/:id/
 //	name, password
@@ -84,6 +109,7 @@ router.put('/:id', function(req, res, next) {
 	var _department = req.body.department;
 	var _place = req.body.place;
 	var _password = req.body.password;
+	var _group = req.body.group;
 	// var _questions = req.body.questions == null ? [] : req.body.questions;
 	// console.log(_questions);
 
@@ -95,7 +121,54 @@ router.put('/:id', function(req, res, next) {
 			department: _department,
 			place: _place,
 			password: _password,
+			group: _group,
 			// questions: _questions,
+		}
+	};
+
+	users
+		.updateById(_id, patched_user, function(err, rows) {
+			res.json(rows || []);
+		});
+
+});
+
+//
+//	PUT
+//	/:id/
+//	total_p
+//
+router.put('/:id/total_p', function(req, res, next) {
+
+	var _id = req.params.id;
+
+	var _total_p = parseInt(req.body.total_p);
+
+	var patched_user = {
+		$set: {
+			total_p: _total_p
+		}
+	};
+
+	users
+		.updateById(_id, patched_user, function(err, rows) {
+			res.json(rows || []);
+		});
+
+});
+
+//
+//	PUT
+//	/:id/
+//	mail_times
+//
+router.put('/:id/mail_times', function(req, res, next) {
+
+	var _id = req.params.id;
+
+	var patched_user = {
+		$inc: {
+			mail_times: 1
 		}
 	};
 
@@ -194,6 +267,8 @@ router.delete('/:id', function(req, res, next) {
 		.removeById(_id, function(err, rows) {
 			res.json(rows);
 		});
+
+	console.log('helllo');
 
 });
 

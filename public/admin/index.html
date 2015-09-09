@@ -7,6 +7,7 @@
     <title>數位轉型問卷 - 管理</title>
     <link rel="stylesheet" href="../css/foundation.css" />
     <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script>
     if (false || !!document.documentMode) {
         alert('此系統不支援IE，請使用Chrome 或 Firefox');
@@ -26,6 +27,7 @@
             <ul class="left">
                 <li><a id="bar-aspectsandquestionss" href="#AspectsAndQuestions">構面＆問題</a></li>
                 <li><a id="bar-userss" href="#Users">使用者</a></li>
+                <li><a id="bar-groups" href="#Groups">群組</a></li>
                 <li><a id="bar-statisticss" href="#Statistics">統計</a></li>
                 <li><a id="bar-urge" href="#Urge">催繳名單</a></li>
             </ul>
@@ -38,6 +40,7 @@
                 <div id="aspects">
                     <a id="{{aspect.id}}" href="#" class="button expand zzz" v-repeat="aspect in aspects" v-on="click: select_aspect(aspect)">{{aspect.name}}</a>
                     <a href="#" class="button secondary expand" v-on="click: add_new()">+ 新增構面</a>
+                    <a id="questions_download" class="button success expand">匯出構面＆題目</a>
                 </div>
             </ul>
         </div>
@@ -60,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div id="questions" class="panel radius" style="padding-bottom:0px;">
+            <div id="questions" class="panel radius">
                 <div class="row collapse" v-repeat="questions" id="{{id}}">
                     <div class="medium-1 columns">
                         <a href="#" class="button disabled postfix" style="margin-bottom: 0px">{{number}}.</a>
@@ -78,8 +81,8 @@
             </div>
         </div>
     </div>
-    <div id="userss" class="row" style="width:1400px; max-width:90%; display: none">
-        <div id="users" class="panel radius callout" style="padding-left: 10px; padding-right:10px">
+    <div id="userss" class="row" style="width:1300px; max-width:95%; display: none">
+        <div id="users" class="panel radius callout" style="padding-left: 10px; padding-right:10px; padding-bottom: 0px;">
             <!-- <div id="user-{{user.id}}" class="row collapse" v-repeat="user in users"> -->
             <div class="row collapse">
                 <div class="medium-1 columns">
@@ -97,36 +100,38 @@
                 <div class="medium-2 columns">
                     <span class="prefix">職稱</span>
                 </div>
-                <div class="medium-3 columns">
+                <div class="medium-2 columns">
                     <span class="prefix">電子信箱</span>
                 </div>
-                <div class="medium-1 columns">
-                    <span class="postfix">密碼</span>
+                <div class="medium-2 columns">
+                    <span class="postfix">群組</span>
                 </div>
                 <div class="medium-1 columns end">
                 </div>
             </div>
             <div id="user-{{user.id}}" class="row collapse" v-repeat="user in users">
                 <div class="medium-1 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.serial" />
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user, false)" v-model="user.serial" />
                 </div>
                 <div class="medium-1 columns">
                     <span class="prefix" style="background: #FFF none repeat scroll 0% 0%;"><a href="{{user.link}}" target="_blank">{{user.i7d}}</a></span>
                 </div>
                 <div class="medium-1 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.name" />
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user, false)" v-model="user.name" />
                 </div>
                 <div class="medium-2 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.department" />
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user, false)" v-model="user.department" />
                 </div>
                 <div class="medium-2 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.place" />
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user, false)" v-model="user.place" />
                 </div>
-                <div class="medium-3 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.email" />
+                <div class="medium-2 columns">
+                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user, false)" v-model="user.email" />
                 </div>
-                <div class="medium-1 columns">
-                    <input style="margin-bottom: 0px" type="text" v-on="input: update_content(user)" v-model="user.password" />
+                <div class="medium-2 columns">
+                    <select v-model="user.group" v-on="change: update_content(user, true)" style="margin:0px;">
+                        <option v-repeat="group in groups" style="padding:8px">{{group.name}}</option>
+                    </select>
                 </div>
                 <!-- <div class="medium-1 columns">
                     <a class="button postfix" v-on="click: add_below($index)" style="padding:0px; margin-bottom:0px">新增於下</a>
@@ -141,24 +146,98 @@
                 </div>
             </div>
         </div>
+        <div class="panel radius" style="padding-left: 10px; padding-right:10px; padding-bottom: 0px; background: rgb(236, 255, 236) none repeat scroll 0% 0%;">
+            <div class="row collapse">
+                <div class="medium-2 columns" style="text-align:center; margin-right:5px">
+                    <h4>匯入使用者: </h4>
+                </div>
+                <div class="medium-1 columns">
+                    <a id="users_upload_button" class="button prefix" style="padding:0px">上傳檔案</a>
+                </div>
+                <div class="medium-1 columns" style="text-align:center">
+                    <h4 id="users_upload_status"> </h4>
+                </div>
+                <div class="medium-3 columns end" style="padding-top: 7px;">
+                    <form id="users_upload">
+                        <input id="users_file" type="file" name="excel" />
+                    </form>
+                </div>
+            </div>
+            <div class="row collapse">
+                <div class="medium-2 columns" style="text-align:center; margin-right:5px">
+                    <h4>匯出使用者: </h4>
+                </div>
+                <div class="medium-1 columns end">
+                    <a id="users_download" class="button prefix" style="padding:0px">下載檔案</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="statisticss" class="row" style="max-width:90%; display: none">
+    <div id="groupss" class="row" style="max-width:95%; display: none">
+        <div class="medium-12 columns">
+            <table>
+                <thead style="-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;">
+                    <tr>
+                        <th>
+                            群組名稱
+                        </th>
+                        <th v-repeat="aspect in aspects">
+                            {{aspect.name}}
+                        </th>
+                        <th>
+                            刪除操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-repeat="group in groups">
+                        <td style="padding:0px;">
+                            <input style="margin-bottom: 0px; border: 0px;" type="text" v-model="group.name" v-on="input: update_content($index)" />
+                        </td>
+                        <td id="{{group.id}}-{{$index}}-td" v-repeat="aspect in group.aspects" v-on="click: handle_check(group, $index), mouseover: mouseOver(group, $index), mouseout: mouseOut(group, $index)" style="cursor:pointer">
+                            <input class="group-aspect-checkbox" id="{{group.id}}-{{aspect.id}}" style="margin:0px; margin-left: 38%;" type="checkbox" v-model="aspect.checked">
+                        </td>
+                        <td style="text-align: center; background-color: #F04124; color: white; cursor:pointer" v-on="click: delete(group)">
+                            刪除
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a href="#" class="button small" style="margin-left:15px" v-on="click: add_new()">新增群組</a>
+        </div>
+    </div>
+    <div id="statisticss" class="row" style="max-width:97%; display: none">
         <div class="medium-2 columns">
             <ul class="side-nav" style="padding-top:0px">
                 <a id="statistics-apects-{{aspect.id}}" href="#" class="button expand zzzx" v-repeat="aspect in aspects" v-on="click: select_aspect(aspect)">{{aspect.name}}</a>
+                <a id="statistics_download" class="button success expand">匯出統計</a>
             </ul>
         </div>
         <div class="medium-10 columns">
             <table style="-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;">
                 <thead>
                     <tr>
-                        <th style="cursor: pointer" v-on="click: sortBy('number')">題號</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('number')">題號
+                            <i id="sortindicator-number" class="fa fa-caret-up fa-1"></i>
+                        </th>
                         <th>內容</th>
-                        <th style="cursor: pointer" v-on="click: sortBy('yes_p')">是(%)</th>
-                        <th style="cursor: pointer" v-on="click: sortBy('no_p')">否(%)</th>
-                        <th style="cursor: pointer" v-on="click: sortBy('total')">總人數</th>
-                        <th style="cursor: pointer" v-on="click: sortBy('void')">缺答人數</th>
-                        <th style="cursor: pointer" v-on="click: sortBy('void_p')">缺答率(%)</th>
+                        <th style="cursor: pointer" v-on="click: sortBy('yes_p')">是(%)
+                            <i id="sortindicator-yes_p" class="fa fa-caret-up fa-1"></i>
+                        </th>
+                        <th style="cursor: pointer" v-on="click: sortBy('no_p')">否(%)
+                            <i id="sortindicator-no_p" class="fa fa-caret-up fa-1"></i>
+                        </th>
+                        <th style="cursor: pointer" v-on="click: sortBy('total')">總人數
+                            <i id="sortindicator-total" class="fa fa-caret-up fa-1"></i>
+                        </th>
+                        <th style="cursor: pointer" v-on="click: sortBy('void')">未答人數
+                            <i id="sortindicator-void" class="fa fa-caret-up fa-1"></i>
+                        </th>
+                        <th style="cursor: pointer" v-on="click: sortBy('void_p')">缺答率(%)
+                            <i id="sortindicator-void_p" class="fa fa-caret-up fa-1"></i>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -208,14 +287,21 @@
                 </table>
             </div>
         </div>
-        <div class="row" style="max-width:100%;">
-            <div class="medium-2 cloumns">
+        <div class="row collapse" style="max-width:100%;">
+            <div class="medium-6 columns">
                 <a href="#" class="button small" style="margin-left:15px" v-on="click: send_mail()">寄出郵件</a>
+                <!--  </div>
+            <div class="medium-1 columns"> -->
+                <a href="#" class="button small" style="margin-left:15px" v-on="click: toggle_all(true)">全選</a>
+                <!--     </div>
+            <div class="medium-2 columns end"> -->
+                <a href="#" class="button small" style="margin-left:15px" v-on="click: toggle_all(false)">全反選</a>
             </div>
         </div>
     </div>
     <script src="../js/vendor/modernizr.js"></script>
     <script src="../js/vendor/jquery.js"></script>
+    <!-- // <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> -->
     <script src="../js/foundation.min.js"></script>
     <script src="../js/vue.min.js"></script>
     <script>
@@ -225,6 +311,7 @@
     <script src="vue/questions.js"></script>
     <script src="vue/aspects-info.js"></script>
     <script src="vue/users.js"></script>
+    <script src="vue/groups.js"></script>
     <script src="vue/statistics.js"></script>
     <script src="vue/urge.js"></script>
     <script>
@@ -232,6 +319,7 @@
         $('#userss').hide(1);
         $('#statisticss').hide(1);
         $('#urges').hide(1);
+        $('#groupss').hide(1);
         $('#aspectsandquestionss').show(1);
     });
     $('#bar-userss').on('click', function() {
@@ -239,13 +327,22 @@
         $('#aspectsandquestionss').hide(1);
         $('#statisticss').hide(1);
         $('#urges').hide(1);
+        $('#groupss').hide(1);
         $('#userss').show(1);
+    });
+    $('#bar-groups').on('click', function() {
+        $('#aspectsandquestionss').hide(1);
+        $('#statisticss').hide(1);
+        $('#urges').hide(1);
+        $('#userss').hide(1);
+        $('#groupss').show(1);
     });
     $('#bar-statisticss').on('click', function() {
         statistics.select_aspect(statistics.aspects[0]);
         $('#aspectsandquestionss').hide(1);
         $('#userss').hide(1);
         $('#urges').hide(1);
+        $('#groupss').hide(1);
         $('#statisticss').show(1);
     });
     $('#bar-urge').on('click', function() {
@@ -253,6 +350,7 @@
         $('#userss').hide(1);
         $('#statisticss').hide(1);
         $('#aspectsandquestionss').hide(1);
+        $('#groupss').hide(1);
         $('#urges').show(1);
     });
     </script>

@@ -29,7 +29,13 @@ var urge = new Vue({
 					}
 
 					user.selected = false;
-					user.mail_status = '';
+
+					if (user.mail_times > 0 && user.mail_times != undefined) {
+						user.mail_status = '已寄送' + user.mail_times + '次';
+					} else {
+						user.mail_status = '';
+					}
+
 
 					return user;
 				});
@@ -68,14 +74,22 @@ var urge = new Vue({
 
 		},
 		get_all_p: function(user) {
-			var tmp = Math.floor(user.questions.length / (urge.questions.length - 1) * 100);
-			if (tmp >= 100) {
-				// $('#send-' + user._id).hide(1);
-				tmp = 100;
+			// var tmp = Math.floor(user.questions.length / (urge.questions.length) * 100);
+			// if (tmp >= 100) {
+			// 	// $('#send-' + user._id).hide(1);
+			// 	tmp = 100;
+			// 	user.lock = true;
+			// 	document.getElementById('send-' + user._id).disabled = true;
+			// }
+			// return tmp;
+			if (user.total_p >= 100) {
 				user.lock = true;
 				document.getElementById('send-' + user._id).disabled = true;
+				user.total_p = 100;
+			} else if ((user.total_p + 1 != user.total_p + 1) || (users.total_p <= 0)) {
+				user.total_p = 0;
 			}
-			return tmp;
+			return user.total_p;
 		},
 		toggle_send: function(user) {
 			if (user.lock) {
@@ -86,21 +100,41 @@ var urge = new Vue({
 				$('#send-' + user._id).prop("checked", user.selected);
 			}
 		},
-		toggle_all: function() {
+		toggle_all: function(target) {
 			for (var i = 0; i < urge.users.length; i++) {
-				urge.users[i].selected = true;
+				if (urge.users[i].lock) {
+					urge.users[i].selected = false;
+					document.getElementById('send-' + urge.users[i]._id).disabled = true;
+				} else {
+					urge.users[i].selected = target;
+					$('#send-' + urge.users[i]._id).prop("checked", target);
+				}
 			}
 		},
 		send_mail: function() {
 
 			var tmp = urge.users.filter(function(user) {
-				return user.selected
+				return user.selected;
 			});
+
+			if (tmp.length == 0) {
+				alert('請至少選擇一位使用者');
+				return
+			}
 
 			tmp.forEach(function(user, i, arr) {
 				$.get('../../mail/' + user._id, function(result) {
 					if (result == true || result == 'true') {
-						user.mail_status = '已寄出';
+						$.ajax({
+								url: '../../users/' + user._id + '/mail_times',
+								method: 'PUT',
+							})
+							.done(function(data) {
+								$.get('../../users/' + user._id, function(_user) {
+									user.mail_status = '已寄送' + _user.mail_times + '次';
+								});
+							});
+
 					} else {
 						user.mail_status = '失敗';
 					}

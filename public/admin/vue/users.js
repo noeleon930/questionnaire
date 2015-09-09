@@ -2,57 +2,77 @@
 var u = new Vue({
 	el: '#users',
 	data: {
-		users: []
+		users: [],
+		groups: []
 	},
 	ready: function() {
 		this.get_all();
 	},
 	methods: {
 		get_all: function() {
-			$.get('../../users/', function(db_users) {
+			$.get('../../groups', function(db_groups) {
+				u.groups = db_groups;
 
-				var tmp = db_users.map(function(user, i, arr) {
-					user.id = user._id;
-					user.i7d = user.id.substring(0, 7);
-					user.link = '../user?uid=' + user.id;
-					if (user.serial == '' || user.serial == undefined || user.name == '' || user.name == undefined) {
-						user.link = '';
-						user.i7d = '';
-					}
-					return user;
-				});
+				$.get('../../users/', function(db_users) {
 
-				if (tmp.length == 0) {
-					tmp = [{
-						name: '',
-						email: '',
-						serial: '',
-						department: '',
-						place: '',
-						password: ''
-					}];
-					$.ajax({
-							url: '../../users/',
-							method: 'POST',
-							data: {
-								name: tmp[0].name,
-								email: tmp[0].email,
-								serial: tmp[0].serial,
-								department: tmp[0].department,
-								place: tmp[0].place,
-								password: tmp[0].password
+					var tmp = db_users.map(function(user, i, arr) {
+						user.id = user._id;
+						user.i7d = user.id.substring(0, 7);
+						user.link = '../user?uid=' + user.id;
+						if (user.serial == '' || user.serial == undefined || user.name == '' || user.name == undefined) {
+							user.link = '';
+							user.i7d = '';
+						}
+						return user;
+					});
+
+					if (tmp.length == 0) {
+						tmp = [{
+							name: '',
+							email: '',
+							serial: '',
+							department: '',
+							place: '',
+							password: '',
+							group: ''
+						}];
+						$.ajax({
+								url: '../../users/',
+								method: 'POST',
+								data: {
+									name: tmp[0].name,
+									email: tmp[0].email,
+									serial: tmp[0].serial,
+									department: tmp[0].department,
+									place: tmp[0].place,
+									password: tmp[0].password,
+									group: tmp[0].group
+								}
+							})
+							.done(function(data) {
+								console.log('get_first_one ' + data);
+								u.update_all();
+							});
+					} else {
+						var tmp2 = tmp.map(function(user, i, arr) {
+
+							var the_group = u.groups.filter(function(group) {
+								return group._id === user.group;
+							});
+
+							if (the_group.length == 1) {
+								user.group = the_group[0].name;
+							} else {
+								user.group = '';
 							}
-						})
-						.done(function(data) {
-							console.log('get_first_one ' + data);
-							u.update_all();
-						});
-				} else {
-					u.users = tmp;
-				}
 
-				console.log(tmp);
+							return user;
+						});
+						u.users = tmp2;
+					}
+				});
 			});
+
 		},
 		put_all: function() {
 
@@ -69,7 +89,8 @@ var u = new Vue({
 				serial: '',
 				department: '',
 				place: '',
-				password: ''
+				password: '',
+				group: ''
 			});
 
 			$.ajax({
@@ -81,7 +102,8 @@ var u = new Vue({
 						serial: u.users[u.users.length - 1].serial,
 						department: u.users[u.users.length - 1].department,
 						place: u.users[u.users.length - 1].place,
-						password: u.users[u.users.length - 1].password
+						password: u.users[u.users.length - 1].password,
+						group: u.users[u.users.length - 1].group
 					}
 				})
 				.done(function(data) {
@@ -89,7 +111,20 @@ var u = new Vue({
 					console.log('done_adding' + data);
 				});
 		},
-		update_content: function(user) {
+		update_content: function(user, change_group) {
+			if (change_group) {
+
+				if (user.questions.length != 0) {
+					if (confirm('確認更改群組 -> 「' + user.name + '  ' + user.department + '  ' + user.place + '」 至 ' + '「' + user.group + '」 嗎?')) {
+						$.get('../../users/' + user._id + '/reset_questions', function(data) {
+							console.log('user ' + user.name + ' has been reset questions');
+						});
+					} else {
+						return;
+					}
+				}
+			}
+
 			$.ajax({
 					url: '../../users/' + user._id,
 					method: 'PUT',
@@ -100,6 +135,16 @@ var u = new Vue({
 						department: user.department,
 						place: user.place,
 						password: user.password,
+						group: (function() {
+							var tmp = u.groups.filter(function(group) {
+								return (group.name === user.group);
+							});
+							if (tmp.length == 1) {
+								return tmp[0]._id;
+							} else {
+								return '';
+							}
+						})()
 					}
 				})
 				.done(function(data) {
@@ -110,20 +155,112 @@ var u = new Vue({
 						user.link = '../user?uid=' + user.id;
 					}
 				});
+
 		},
 		delete: function(n) {
-			$.ajax({
-					url: '../../users/' + u.users[n]._id,
-					method: 'DELETE'
-				})
-				.done(function(data) {
-					u.update_all();
-					console.log('done_deleting' + data);
-				});
+			if (confirm('確認刪除 -> 「' + u.users[n].name + '  ' + u.users[n].department + '  ' + u.users[n].place + '」 嗎?')) {
+				$.ajax({
+						url: '../../users/' + u.users[n]._id,
+						method: 'DELETE'
+					})
+					.done(function(data) {
+						u.update_all();
+						console.log('done_deleting' + data);
+					});
+			}
 		},
 		update_all: function() {
 			this.put_all();
 			this.get_all();
 		}
 	}
+});
+
+var parse_data = function(input) {
+
+	var tmp = parseInt(input);
+
+	if (tmp + 1 != tmp + 1) {
+		return input;
+	} else {
+		return tmp.toString();
+	}
+};
+
+$('#users_upload_button').click(function(event) {
+
+	event.preventDefault();
+
+	var formData = new FormData($('#users_upload')[0]);
+
+	$.ajax({
+			url: '../../upload/users',
+			type: 'POST',
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false,
+		})
+		.done(function(data) {
+
+			var tmp = [];
+
+			for (var i = 1; i < data.length; i++) {
+				tmp.push(data[i]);
+			}
+
+			var ttmp = tmp.map(function(user, i, arr) {
+				return {
+					name: user[1],
+					email: user[4],
+					serial: parse_data(user[0]),
+					department: user[2],
+					place: user[3],
+					password: '',
+					group: parse_data(user[5])
+				};
+			});
+
+			console.log(ttmp);
+
+			ttmp.forEach(function(user, i, arr) {
+				$.ajax({
+					url: '../../users/',
+					method: 'POST',
+					data: {
+						name: user.name,
+						email: user.email,
+						serial: user.serial,
+						department: user.department,
+						place: user.place,
+						password: user.password,
+						group: (function() {
+							var tmp = u.groups.filter(function(group) {
+								return (group.name === user.group);
+							});
+							if (tmp.length == 1) {
+								return tmp[0]._id;
+							} else {
+								return '';
+							}
+						})()
+					}
+				});
+			});
+
+			u.get_all();
+
+			$('#users_upload_status').text('上傳成功');
+			$('#users_file').val('');
+		})
+		.fail(function() {
+
+			$('#users_upload_status').text('上傳失敗');
+			$('#users_file').val('');
+		});
+
+});
+
+$('#users_download').click(function() {
+	$(this).attr("href", "../../download/users");
 });

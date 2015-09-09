@@ -16,6 +16,11 @@ var statistics = new Vue({
 	compiled: function() {
 		this.get_all_aspects();
 	},
+	computed: {
+		groups: function() {
+			return g.groups;
+		}
+	},
 	methods: {
 		get_all_aspects: function() {
 			$.get('../../aspects', function(db_aspects) {
@@ -41,6 +46,28 @@ var statistics = new Vue({
 
 				$.get('../../users', function(db_users) {
 
+					var group_permission = statistics.groups
+						.filter(function(group) {
+							return (group.aspects
+								.filter(function(_aspect) {
+									return (_aspect.id == statistics.current_aspect_id && _aspect.checked);
+								})
+								.length > 0);
+						})
+						.map(function(group) {
+							return group._id;
+						});
+
+					console.log(group_permission);
+
+					var tmp_total = db_users
+						.filter(function(user) {
+							return ($.inArray(user.group, group_permission) != -1);
+						})
+						.length;
+
+					console.log(tmp_total);
+
 					var tmp = db_questions
 						.map(function(question, i, arr) {
 							question.id = question._id;
@@ -55,7 +82,8 @@ var statistics = new Vue({
 								trimmed_question: (question.content.length >= 30) ? question.content.substring(0, 27) + '...' : question.content,
 								yes: 0,
 								no: 0,
-								unknown: 0
+								unknown: 0,
+								total: tmp_total
 							};
 
 							db_users.forEach(function(user, i, arr) {
@@ -74,7 +102,7 @@ var statistics = new Vue({
 								});
 							});
 
-							ttmp.unknown = u.users.length - ttmp.yes - ttmp.no;
+							ttmp.unknown = tmp_total - ttmp.yes - ttmp.no;
 
 							if (ttmp.unknown < 0) ttmp.unknown = 0;
 
@@ -154,6 +182,13 @@ var statistics = new Vue({
 					break;
 			}
 			statistics.sortRule[target] = !statistics.sortRule[target];
+			$('.fa').removeClass('fa-caret-up');
+			$('.fa').removeClass('fa-caret-down');
+			if (!statistics.sortRule[target]) {
+				$('#sortindicator-' + target).addClass('fa-caret-up');
+			} else {
+				$('#sortindicator-' + target).addClass('fa-caret-down');
+			}
 		},
 		mouseOver: function(question) {
 			$('#quesiton-row-' + question.id).addClass('overedTableRow');
@@ -162,4 +197,8 @@ var statistics = new Vue({
 			$('#quesiton-row-' + question.id).removeClass('overedTableRow');
 		}
 	}
+});
+
+$('#statistics_download').click(function() {
+	$(this).attr("href", "../../download/statistics");
 });

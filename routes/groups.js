@@ -4,7 +4,7 @@ var router = express.Router();
 //
 //	DATABASE
 //
-var aspects = require('../database/aspects');
+var groups = require('../database/groups');
 
 //
 //	POST
@@ -13,20 +13,17 @@ var aspects = require('../database/aspects');
 router.post('/', function(req, res, next) {
 
 	var _name = req.body.name;
-	var _comment = req.body.comment;
+	var _aspects = req.body.aspects || [];
 
-	var new_aspect = {
+	var new_group = {
 		name: _name,
-		comment: _comment,
-		// questions: []
+		aspects: _aspects
 	}
 
-	aspects
-		.insert(new_aspect, function(err, rows) {
+	groups
+		.insert(new_group, function(err, rows) {
 			res.json(rows);
 		});
-	// var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-	// console.log(ip);
 
 });
 
@@ -35,7 +32,7 @@ router.post('/', function(req, res, next) {
 //
 router.get('/', function(req, res, next) {
 
-	aspects
+	groups
 		.find({})
 		.toArray(function(err, rows) {
 			res.json(rows);
@@ -51,7 +48,7 @@ router.get('/:id', function(req, res, next) {
 
 	var _id = req.params.id;
 
-	aspects
+	groups
 		.findById(_id, function(err, rows) {
 			res.json(rows || []);
 		});
@@ -68,48 +65,25 @@ router.put('/:id', function(req, res, next) {
 	var _id = req.params.id;
 
 	var _name = req.body.name;
-	var _comment = req.body.comment;
+	var _aspects = req.body.aspects || [];
 
-	var patched_aspect = {
+	var patched_group = {
 		name: _name,
-		comment: _comment
-	};
+		aspects: _aspects
+	}
 
-	console.log(patched_aspect);
-
-	aspects
-		.updateById(_id, patched_aspect, function(err, rows) {
+	groups
+		.updateById(_id, patched_group, function(err, rows) {
 			res.json(rows);
 		});
 });
-
-//
-//	PUT
-//	/:id/
-//	name, questions
-//
-// router.put('/:id/add', function(req, res, next) {
-
-// 	var _id = req.params.id;
-
-// 	var _question_id = req.body.question_id;
-
-// 	aspects
-// 		.updateById(_id, {
-// 			$addToSet: {
-// 				questions: _question_id
-// 			}
-// 		}, function(err, rows) {
-// 			res.json(rows || []);
-// 		});
-// });
 
 //
 //	DELETE
 //
 router.delete('/', function(req, res, next) {
 
-	aspects
+	groups
 		.remove({}, function(err, rows) {
 			res.json(rows);
 		});
@@ -123,7 +97,7 @@ router.delete('/:id', function(req, res, next) {
 
 	var _id = req.params.id;
 
-	aspects
+	groups
 		.removeById(_id, function(err, rows) {
 			res.json(rows);
 		});

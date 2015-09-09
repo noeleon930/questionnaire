@@ -104,14 +104,16 @@ var q = new Vue({
 				});
 		},
 		delete: function(n) {
-			$.ajax({
-					url: '../../questions/' + q.questions[n]._id,
-					method: 'DELETE'
-				})
-				.done(function(data) {
-					q.update_all();
-					console.log('done_deleting' + data);
-				});
+			if (confirm('確認刪除 -> 第' + (n + 1) + '題  「' + q.questions[n].content + '」 嗎?')) {
+				$.ajax({
+						url: '../../questions/' + q.questions[n]._id,
+						method: 'DELETE'
+					})
+					.done(function(data) {
+						q.update_all();
+						console.log('done_deleting' + data);
+					});
+			}
 		},
 		update_all: function() {
 			// var tmp = q.questions.map(function(question, i, arr) {
@@ -124,4 +126,8 @@ var q = new Vue({
 			this.get_all();
 		}
 	}
+});
+
+$('#questions_download').click(function() {
+	$(this).attr("href", "../../download/questions");
 });
