@@ -54,20 +54,30 @@ var u = new Vue({
 								u.update_all();
 							});
 					} else {
-						var tmp2 = tmp.map(function(user, i, arr) {
+						var tmp2 = tmp
+							.map(function(user, i, arr) {
 
-							var the_group = u.groups.filter(function(group) {
-								return group._id === user.group;
+								var the_group = u.groups.filter(function(group) {
+									return group._id === user.group;
+								});
+
+								if (the_group.length == 1) {
+									user.group = the_group[0].name;
+								} else {
+									user.group = '';
+								}
+
+								return user;
+							})
+							.sort(function(u1, u2) {
+								if (u1.serial < u2.serial) {
+									return -1;
+								} else if (u1.serial > u2.serial) {
+									return 1;
+								} else {
+									return 0;
+								}
 							});
-
-							if (the_group.length == 1) {
-								user.group = the_group[0].name;
-							} else {
-								user.group = '';
-							}
-
-							return user;
-						});
 						u.users = tmp2;
 					}
 				});
@@ -169,9 +179,50 @@ var u = new Vue({
 					});
 			}
 		},
+		delete_all: function() {
+			if (confirm('確認刪除 -> 「所有使用者」 嗎?')) {
+				$.ajax({
+						url: '../../users/',
+						method: 'DELETE'
+					})
+					.done(function(data) {
+						u.update_all();
+						console.log('done_deleting' + data);
+					});
+			}
+		},
 		update_all: function() {
 			this.put_all();
 			this.get_all();
+		},
+		check_duplicate: function(fileupload) {
+			// Warn duplicated data 
+			var countTmp = {};
+			this.users.forEach(function(uu, ii, arrr) {
+				if (countTmp[uu.serial] == undefined || countTmp[uu.serial] == null) {
+					countTmp[uu.serial] = 1;
+				} else {
+					countTmp[uu.serial] += 1;
+				}
+			});
+
+			var summmm = '';
+			var alerttt = false;
+			Object.keys(countTmp).forEach(function(p, ii, arrrr) {
+				if (countTmp[p] > 1) {
+					summmm += '員工編號 ' + p + ' 有重複資料，請檢查\n';
+					alerttt = true;
+				}
+			});
+
+			console.log(countTmp);
+			console.log('wowowow', countTmp[4]);
+
+			if (alerttt) {
+				alert(summmm);
+			} else if (alerttt == false && fileupload != true) {
+				alert('資料正確');
+			}
 		}
 	}
 });
@@ -252,6 +303,8 @@ $('#users_upload_button').click(function(event) {
 
 			$('#users_upload_status').text('上傳成功');
 			$('#users_file').val('');
+
+			u.check_duplicate(true);
 		})
 		.fail(function() {
 

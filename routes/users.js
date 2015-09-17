@@ -157,6 +157,24 @@ router.put('/:id/total_p', function(req, res, next) {
 
 });
 
+router.put('/:id/completed_aspects', function(req, res, next) {
+
+	var _id = req.params.id;
+
+	var _aspects_json_string = req.body.aspects_json_string;
+
+	var patched_user = {
+		$set: {
+			aspects_json_string: _aspects_json_string
+		}
+	};
+
+	users
+		.updateById(_id, patched_user, function(err, rows) {
+			res.json(rows || []);
+		});
+});
+
 //
 //	PUT
 //	/:id/

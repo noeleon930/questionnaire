@@ -142,7 +142,18 @@
             </div>
             <div class="row collapse">
                 <div class="medium-1 columns">
-                    <a class="button prefix" v-on="click: add_below()" style="padding:0px">+新增使用者</a>
+                    <a class="button prefix" v-on="click: add_below()" style="padding:0px">新增使用者</a>
+                </div>
+                <div class="medium-1 columns">
+                    <a class="button postfix" v-on="click: check_duplicate()" style="padding:0px">檢查資料</a>
+                </div>
+                <div class="medium-1 columns end">
+                    <a class="button postfix alert" v-on="click: delete_all()" style="padding:0px">刪除所有資料</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-10 columns">
+                    <p>*為確保資料一致性，當上傳檔案有資料錯誤或重複資料時，強烈建議先刪除所有線上資料，編輯檔案之後重新上傳</p>
                 </div>
             </div>
         </div>

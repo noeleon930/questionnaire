@@ -3,16 +3,15 @@ var a = new Vue({
 	el: '#aspects',
 	data: {
 		aspects: [],
+		user_group: '',
 		current_aspect_id: ''
 	},
-	compiled: function() {
-		this.current_aspect_id = '';
-		this.get_all();
-	},
-	computed: {
-		user_group: function() {
-			return u.group;
-		}
+	ready: function() {
+		$.get('../../users/' + global_user_id, function(user) {
+			a.user_group = user.group || '';
+			a.current_aspect_id = '';
+			a.get_all();
+		});
 	},
 	methods: {
 		get_all: function() {
@@ -62,7 +61,7 @@ var a = new Vue({
 					}, 150);
 					prg.aspect_pc();
 
-					$('html, body').scrollTop(0);
+					$('#questions').scrollTop(0);
 
 					setTimeout(function() {
 						$('.button').removeClass('secondary');

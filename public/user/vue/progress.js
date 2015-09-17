@@ -2,8 +2,11 @@ var prg = new Vue({
 	el: '#progress',
 	data: {
 		total_num: 0,
+		total_user_selected: 0,
 		total_p: 0,
-		aspect_p: 0
+		aspect_p: 0,
+		aspect_selected_num: 0,
+		aspect_total_num: 0
 	},
 	compiled: function() {
 		$.get('../../questions', function(db_questions) {
@@ -21,6 +24,9 @@ var prg = new Vue({
 	methods: {
 		total_pc: function() {
 			this.total_p = Math.floor(u.questions.length / prg.total_num * 100) > 100 ? 0 : Math.floor(u.questions.length / prg.total_num * 100);
+
+			this.total_user_selected = u.questions.length;
+
 			if (this.total_p + 1 != this.total_p + 1) {
 				this.total_p = 0;
 			}
@@ -49,6 +55,27 @@ var prg = new Vue({
 			});
 
 			this.aspect_p = Math.floor(tmp / q.questions.length * 100) || 0;
+
+			this.aspect_selected_num = tmp;
+			this.aspect_total_num = q.questions.length;
+
+			if (this.aspect_p == 100 || this.aspect_p == 100.0 || this.aspect_p == '100' || this.aspect_p == '100.0') {
+				$.ajax({
+						url: '../../users/' + global_user_id + '/completed_aspects',
+						method: 'PUT',
+						data: {
+							aspects_json_string: JSON.stringify((u.aspects_json != undefined || u.aspects_json.length > 0) ? (function() {
+								var aaa = u.aspects_json;
+								aaa.push(a.current_aspect_id);
+								return aaa;
+							})() : [a.current_aspect_id])
+						}
+					})
+					.done(function(data) {
+						console.log('done_updating completed_aspects' + data);
+						$('#aspect-' + a.current_aspect_id).addClass('success');
+					});
+			}
 		}
 	}
 });

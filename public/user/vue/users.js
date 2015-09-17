@@ -8,11 +8,17 @@ var u = new Vue({
 		department: '',
 		place: '',
 		group: '',
+		aspects_json: [],
 		questions: [],
 	},
 	ready: function() {
 		this.load(function() {
 			$('#the_title').html('數位轉型問卷 - ' + u.name);
+			setTimeout(function() {
+				u.aspects_json.forEach(function(uu, ii, arr) {
+					$('#aspect-' + uu).addClass('success');
+				});
+			}, 200);
 		});
 	},
 	methods: {
@@ -25,6 +31,7 @@ var u = new Vue({
 				u.department = user.department || '';
 				u.place = user.place || '';
 				u.group = user.group || '';
+				u.aspects_json = ((user.aspects_json_string == undefined || user.aspects_json_string == '') ? [] : JSON.parse(user.aspects_json_string));
 				u.questions = user.questions;
 
 				callback();

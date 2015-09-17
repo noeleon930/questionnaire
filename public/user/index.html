@@ -9,101 +9,160 @@
     <link rel="stylesheet" href="../css/app.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script>
-    eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3 c=(e(){3 4=[],2;3 5=d.8.9.f(d.8.9.h(\'?\')+1).a(\'&\');j(3 i=0;i<5.g;i++){2=5[i].a(\'=\');4.k(2[0]);4[2[0]]=2[1]}l 4})();3 6=p("請輸入密碼","");b(6!=o){b(6!=c[\'m\'].n(0,7)){q.8.9=""}}',27,27,'||hash|var|vars|hashes|input_result||location|href|split|if|global_query|window|function|slice|length|indexOf||for|push|return|uid|substring|null|prompt|document'.split('|'),0,{}))
+    var global_query = (function() {
+        var vars = [],
+            hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    })();
+    </script>
+    <script>
     </script>
     <script src="../js/vendor/modernizr.js"></script>
+    <style type="text/css">
+    html,
+    body {
+        overflow: hidden;
+        height: 100%
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .overflowdiv-dr {
+        height: expression( this.scrollHeight > 449 ? "450px": "auto");
+        max-height: 450px;
+        overflow: auto;
+    }
+    </style>
 </head>
 
 <body>
-    <div id="the_user_content">
-        <p> </p>
-        <!--     <div class="row collapse" style="max-width: 95%">
-        <div class="medium-5 columns">
-            
-        </div>
-    </div> -->
-        <div id="personal" class="row collapse" style="max-width: 95%">
-            <div class="medium-2 columns">
-                <h5> </h5>
-            </div>
-            <div class="panel medium-10 columns callout radius end" style="margin-bottom: 0px">
-                <div class="row">
-                    <div class="medium-2 columns">
-                        <h5> 姓名 : {{name}}</h5>
-                    </div>
-                    <!--   <div class="medium-2 columns">
-                        <h5> 員工編號 : {{serial}}</h5>
-                    </div> -->
-                    <div class="medium-3 columns">
-                        <h5> 單位名稱 : {{department}}</h5>
-                    </div>
-                    <div class="medium-3 columns">
-                        <h5> 職稱 : {{place}}</h5>
-                    </div>
-                    <div class="medium-4 columns end">
-                        <h5> 電子信箱 : {{email}}</h5>
-                    </div>
-                </div>
+    <div class="row" style="width: 95%; max-width: 1400px;">
+        <div class="small-3 columns">
+            <p> </p>
+            <div class="panel callout" style="padding-bottom: 0px;">
+                <ul id="aspects" class="side-nav" style="padding-top: 0px">
+                    <li v-repeat="aspect in aspects" style="margin:0px">
+                        <a id="aspect-{{aspect.id}}" class="button expand" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px;">{{aspect.name}}</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="row collapse" style="max-width: 95%">
-            <div class="medium-2 columns">
-                <div style="position:absolute; top:-80px; width:85%">
-                    <h3>數位轉型問卷</h3>
-                    <div id="progress">
-                        <span>總進度 : </span>
-                        <div class="progress small success radius" style="padding-left:0px;height: 120%;">
-                            <span class="meter" style="width: {{total_p}}%; text-align:center">{{total_p}}%</span>
-                        </div>
-                        <span>構面進度 : </span>
-                        <div class="progress small success radius" style="padding-left:0px;height: 120%;">
-                            <span class="meter" style="width: {{aspect_p}}%; text-align:center">{{aspect_p}}%</span>
-                        </div>
-                    </div>
-                    <ul id="aspects" class="side-nav">
-                        <li v-repeat="aspect in aspects" style="margin:0px">
-                            <a id="aspect-{{aspect.id}}" class="button expand" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px">{{aspect.name}}</a>
-                        </li>
-                        <!-- <li style="margin:0px">
-                        <a class="button alert expand" v-on="click: exit_window()" style="height:60px;margin-top:0px; margin-bottom:14px">離開</a>
-                    </li> -->
-                    </ul>
-                </div>
-            </div>
-            <div class="medium-10 columns">
-                <div id="questions">
-                    <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
-                        <div class="medium-10 columns">
-                            <div class="panel" style="margin:0px">
-                                <h5>{{question.number}}.&nbsp&nbsp{{question.content}}</h5>
-                            </div>
-                        </div>
-                        <div class="medium-2 columns" style="top: 17px; left: 17px;">
-                            <div style="float:left; cursor: pointer;" v-on="click: pickYes(question.id)">
-                                <input id="yes-{{question.id}}" style="margin-bottom: 0px" type="radio" value="Yes" v-model="answer">
-                                <label>是</label>
-                            </div>
-                            <div style="cursor: pointer;" v-on="click: pickNo(question.id)">
-                                <input id="no-{{question.id}}" style="margin-bottom: 0px" type="radio" value="No" v-model="answer">
-                                <label>否</label>
-                            </div>
-                        </div>
-                    </div>
+        <div class="small-9 columns">
+            <div id="personal" class="row">
+                <div class="small-12 columns">
                     <p> </p>
+                    <div class="panel callout">
+                        <div class="row">
+                            <div class="small-2 columns">
+                                <a class="th">
+                                    <img src="../img/Firstbanklogo.jpg" style="height: 100px">
+                                </a>
+                            </div>
+                            <div class="small-10 columns">
+                                <div class="row">
+                                    <div class="small-12 columns">
+                                        <h3>歡迎進入第一銀行數位成熟度問卷</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-12 columns">
+                                        <h5>單位 : {{department}}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-6 columns">
+                                        <h5>姓名 : {{name}}</h5>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <h5>職稱 : {{place}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="margin-bottom: 0px">
+                <div id="questions" class="row" style="overflow-y: auto; overflow-x: hidden">
+                    <div class="small-12 columns">
+                        <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
+                            <div class="small-10 columns">
+                                <div class="panel" style="margin:0px;">
+                                    <h5>{{question.number}}.&nbsp&nbsp{{question.content}}</h5>
+                                </div>
+                            </div>
+                            <div class="small-2 columns" style="top: 17px; left: 17px;">
+                                <div class="row">
+                                    <div class="small-6 columns" v-on="click: pickYes(question.id)" style="padding: 0px;">
+                                        <div style="cursor: pointer;">
+                                            <input id="yes-{{question.id}}" style="margin-bottom: 0px;" type="radio" value="Yes" v-model="answer">
+                                            <label style="font-size: larger">是</label>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns" v-on="click: pickNo(question.id)" style="padding: 0px;">
+                                        <div style="cursor: pointer;">
+                                            <input id="no-{{question.id}}" style="margin-bottom: 0px;" type="radio" value="No" v-model="answer">
+                                            <label style="font-size: larger">否</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="progress" class="row">
+                <div class="small-12 columns">
+                    <p> </p>
+                    <div class="panel">
+                        <div class="row">
+                            <div class="small-5 columns">
+                                <div class="panel callout" style="padding: 5px; margin-bottom: 0px; height: 62px">
+                                    <span>總進度 : {{total_user_selected}} / {{total_num}} </span>
+                                    <div class="progress small success radius" style="padding:0px;height: 49%; background-color: #FFFFFF">
+                                        <span class="meter" style="width: {{total_p}}%; text-align:center">{{total_p}}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-5 columns">
+                                <div class="panel callout" style="padding: 5px; margin-bottom: 0px; height: 62px">
+                                    <span>構面進度 : {{aspect_selected_num}} / {{aspect_total_num}} </span>
+                                    <div class="progress small success radius" style="padding:0px;height: 49%; background-color: #FFFFFF">
+                                        <span class="meter" style="width: {{aspect_p}}%; text-align:center">{{aspect_p}}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-2 columns">
+                                <div class="panel callout" style="padding: 5px; margin-bottom: 0px; height: 62px">
+                                    <span style="float:left; padding-top:10px; margin-right: 5px">回到上</span>
+                                    <i id="gotop" class="fa fa-arrow-circle-up" style="font-size:40px; cursor:pointer"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div style="position:fixed; top:88%; left:93%">
-        <span style="float:left">回到最上層&nbsp&nbsp</span>
-        <i id="gotop" class="fa fa-arrow-circle-up" style="font-size:40px; cursor:pointer"></i>
-    </div>
-    <!-- // <script src="../js/vendor/jquery.js"></script> -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="../js/vue.min.js"></script>
     <script src="../js/foundation.min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
     <script>
     $(document).foundation();
+    </script>
+    <script>
+    $('#questions').css('height', $(window).height() * 58 / 100);
+    $('#aspects').css('height', $(window).height() * 93 / 100);
     </script>
     <script src="vue/users.js"></script>
     <script src="vue/aspects.js"></script>
@@ -111,7 +170,7 @@
     <script src="vue/progress.js"></script>
     <script>
     $('#gotop').click(function() {
-        $('html, body').scrollTop(0);
+        $('#questions').scrollTop(0);
     });
     </script>
 </body>
