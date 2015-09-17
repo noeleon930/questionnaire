@@ -18,7 +18,7 @@ var u = new Vue({
 				u.aspects_json.forEach(function(uu, ii, arr) {
 					$('#aspect-' + uu).addClass('success');
 				});
-			}, 200);
+			}, 500);
 		});
 	},
 	methods: {

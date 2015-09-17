@@ -79,6 +79,8 @@ var u = new Vue({
 								}
 							});
 						u.users = tmp2;
+
+						u.check_duplicate(true);
 					}
 				});
 			});
@@ -222,6 +224,8 @@ var u = new Vue({
 				alert(summmm);
 			} else if (alerttt == false && fileupload != true) {
 				alert('資料正確');
+			} else if (alerttt == true && fileupload == true) {
+				alert(summmm);
 			}
 		}
 	}
@@ -304,7 +308,7 @@ $('#users_upload_button').click(function(event) {
 			$('#users_upload_status').text('上傳成功');
 			$('#users_file').val('');
 
-			u.check_duplicate(true);
+			// u.check_duplicate(true);
 		})
 		.fail(function() {
 

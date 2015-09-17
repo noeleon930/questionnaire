@@ -56,7 +56,7 @@
                 </ul>
             </div>
         </div>
-        <div class="small-9 columns">
+        <div id="content_part" class="small-9 columns">
             <div id="personal" class="row">
                 <div class="small-12 columns">
                     <p> </p>
@@ -96,11 +96,11 @@
                     <div class="small-12 columns">
                         <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
                             <div class="small-10 columns">
-                                <div class="panel" style="margin:0px;">
+                                <div class="panel" style="margin:0px; padding: 15px">
                                     <h5>{{question.number}}.&nbsp&nbsp{{question.content}}</h5>
                                 </div>
                             </div>
-                            <div class="small-2 columns" style="top: 17px; left: 17px;">
+                            <div class="small-2 columns" style="top: 10px; left: 17px;">
                                 <div class="row">
                                     <div class="small-6 columns" v-on="click: pickYes(question.id)" style="padding: 0px;">
                                         <div style="cursor: pointer;">
@@ -161,8 +161,10 @@
     $(document).foundation();
     </script>
     <script>
-    $('#questions').css('height', $(window).height() * 58 / 100);
-    $('#aspects').css('height', $(window).height() * 93 / 100);
+    $('#questions').css('height', $(window).height() * 50 / 100);
+    setTimeout(function() {
+        $('#aspects').css('height', $('#content_part').height() * 93 / 100);
+    }, 400);
     </script>
     <script src="vue/users.js"></script>
     <script src="vue/aspects.js"></script>

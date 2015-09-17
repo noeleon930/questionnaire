@@ -17,7 +17,7 @@ var prg = new Vue({
 						return ($.inArray(question.aspect, group_permission) != -1);
 					})
 					.length;
-			}, 100);
+			}, 300);
 
 		});
 	},
