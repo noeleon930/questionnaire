@@ -43,8 +43,10 @@ var q = new Vue({
                     $('#no-' + id).prop("checked", false);
 
                     u.load(function() {
-                        prg.total_pc();
-                        prg.aspect_pc();
+                        setTimeout(function() {
+                            prg.total_pc();
+                            prg.aspect_pc();
+                        }, 88);
                         $('#question-' + id + ' > div > div.panel').addClass('answered');
                     });
                 });
@@ -68,8 +70,10 @@ var q = new Vue({
                     $('#no-' + id).prop("checked", true);
 
                     u.load(function() {
-                        prg.total_pc();
-                        prg.aspect_pc();
+                        setTimeout(function() {
+                            prg.total_pc();
+                            prg.aspect_pc();
+                        }, 88);
                         $('#question-' + id + ' > div > div.panel').addClass('answered');
                     });
                 });
