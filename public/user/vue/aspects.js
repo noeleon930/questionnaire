@@ -58,8 +58,8 @@ var a = new Vue({
 
 					setTimeout(function() {
 						prg.total_pc();
+						prg.aspect_pc();
 					}, 400);
-					prg.aspect_pc();
 
 					$('#questions').scrollTop(0);
 

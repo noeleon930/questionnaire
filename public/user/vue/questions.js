@@ -25,6 +25,9 @@ var q = new Vue({
             });
         },
         pickYes: function(id) {
+
+            console.log('click yes!');
+
             $.ajax({
                     url: '../../users/' + global_user_id + '/answer',
                     method: 'PUT',
@@ -47,6 +50,9 @@ var q = new Vue({
                 });
         },
         pickNo: function(id) {
+
+            console.log('click no!');
+
             $.ajax({
                     url: '../../users/' + global_user_id + '/answer',
                     method: 'PUT',
