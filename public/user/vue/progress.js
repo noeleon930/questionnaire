@@ -23,12 +23,12 @@ var prg = new Vue({
 	},
 	methods: {
 		total_pc: function() {
-			this.total_p = Math.floor(u.questions.length / prg.total_num * 100) > 100 ? 0 : Math.floor(u.questions.length / prg.total_num * 100);
+			prg.total_p = Math.floor(u.questions.length / prg.total_num * 100) > 100 ? 0 : Math.floor(u.questions.length / prg.total_num * 100);
 
-			this.total_user_selected = u.questions.length;
+			prg.total_user_selected = u.questions.length;
 
-			if (this.total_p + 1 != this.total_p + 1) {
-				this.total_p = 0;
+			if (prg.total_p + 1 != prg.total_p + 1) {
+				prg.total_p = 0;
 			}
 
 			$('#jquery-total').text('總進度 : ' + prg.total_user_selected + ' / ' + prg.total_num);
@@ -40,7 +40,7 @@ var prg = new Vue({
 					url: '../../users/' + global_user_id + '/total_p',
 					method: 'PUT',
 					data: {
-						total_p: this.total_p
+						total_p: prg.total_p
 					}
 				})
 				.done(function(data) {
@@ -59,17 +59,17 @@ var prg = new Vue({
 				});
 			});
 
-			this.aspect_p = Math.floor(tmp / q.questions.length * 100) || 0;
+			prg.aspect_p = Math.floor(tmp / q.questions.length * 100) || 0;
 
-			this.aspect_selected_num = tmp;
-			this.aspect_total_num = q.questions.length;
+			prg.aspect_selected_num = tmp;
+			prg.aspect_total_num = q.questions.length;
 
 			$('#jquery-aspect').text('構面進度 : ' + prg.aspect_selected_num + ' / ' + prg.aspect_total_num);
 
 			$('#jquery-aspect-p').text(prg.aspect_p + '%');
 			$('#jquery-aspect-p').css('width', prg.aspect_p + '%');
 
-			if (this.aspect_p == 100 || this.aspect_p == 100.0 || this.aspect_p == '100' || this.aspect_p == '100.0') {
+			if (prg.aspect_p == 100 || prg.aspect_p == 100.0 || prg.aspect_p == '100' || prg.aspect_p == '100.0') {
 				$.ajax({
 						url: '../../users/' + global_user_id + '/completed_aspects',
 						method: 'PUT',
