@@ -31,12 +31,12 @@ var prg = new Vue({
 				this.total_p = 0;
 			}
 
-			setTimeout(function() {
+			setInterval(function() {
 				$('#jquery-total').text('總進度 : ' + prg.total_user_selected + ' / ' + prg.total_num);
 
 				$('#jquery-total-p').text(prg.total_p + '%');
 				$('#jquery-total-p').css('width', prg.total_p + '%');
-			}, 50);
+			}, 100);
 
 			$.ajax({
 					url: '../../users/' + global_user_id + '/total_p',
@@ -66,12 +66,12 @@ var prg = new Vue({
 			this.aspect_selected_num = tmp;
 			this.aspect_total_num = q.questions.length;
 
-			setTimeout(function() {
+			setInterval(function() {
 				$('#jquery-aspect').text('構面進度 : ' + prg.aspect_selected_num + ' / ' + prg.aspect_total_num);
 
 				$('#jquery-aspect-p').text(prg.aspect_p + '%');
 				$('#jquery-aspect-p').css('width', prg.aspect_p + '%');
-			}, 50);
+			}, 100);
 
 			if (this.aspect_p == 100 || this.aspect_p == 100.0 || this.aspect_p == '100' || this.aspect_p == '100.0') {
 				$.ajax({
