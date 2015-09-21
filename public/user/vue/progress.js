@@ -32,10 +32,10 @@ var prg = new Vue({
 			}
 
 			setTimeout(function() {
-				$('#jquery-total').text('總進度 : ' + this.total_user_selected + ' / ' + prg.total_num);
+				$('#jquery-total').text('總進度 : ' + prg.total_user_selected + ' / ' + prg.total_num);
 
-				$('#jquery-total-p').text(this.total_p + '%');
-				$('#jquery-total-p').css('width', this.total_p + '%');
+				$('#jquery-total-p').text(prg.total_p + '%');
+				$('#jquery-total-p').css('width', prg.total_p + '%');
 			}, 50);
 
 			$.ajax({
@@ -67,10 +67,10 @@ var prg = new Vue({
 			this.aspect_total_num = q.questions.length;
 
 			setTimeout(function() {
-				$('#jquery-aspect').text('構面進度 : ' + this.aspect_selected_num + ' / ' + this.aspect_total_num);
+				$('#jquery-aspect').text('構面進度 : ' + prg.aspect_selected_num + ' / ' + prg.aspect_total_num);
 
-				$('#jquery-aspect-p').text(this.aspect_p + '%');
-				$('#jquery-aspect-p').css('width', this.aspect_p + '%');
+				$('#jquery-aspect-p').text(prg.aspect_p + '%');
+				$('#jquery-aspect-p').css('width', prg.aspect_p + '%');
 			}, 50);
 
 			if (this.aspect_p == 100 || this.aspect_p == 100.0 || this.aspect_p == '100' || this.aspect_p == '100.0') {
