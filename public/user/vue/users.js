@@ -23,19 +23,23 @@ var u = new Vue({
 	},
 	methods: {
 		load: function(callback) {
-			$.get('../../users/' + global_user_id, function(user) {
+			$.ajax({
+					url: '../../users/' + global_user_id,
+					cache: false
+				})
+				.done(function(user) {
 
-				u.name = user.name || '';
-				u.email = user.email || '';
-				u.serial = user.serial || '';
-				u.department = user.department || '';
-				u.place = user.place || '';
-				u.group = user.group || '';
-				u.aspects_json = ((user.aspects_json_string == undefined || user.aspects_json_string == '') ? [] : JSON.parse(user.aspects_json_string));
-				u.questions = user.questions;
+					u.name = user.name || '';
+					u.email = user.email || '';
+					u.serial = user.serial || '';
+					u.department = user.department || '';
+					u.place = user.place || '';
+					u.group = user.group || '';
+					u.aspects_json = ((user.aspects_json_string == undefined || user.aspects_json_string == '') ? [] : JSON.parse(user.aspects_json_string));
+					u.questions = user.questions;
 
-				callback();
-			});
+					callback();
+				});
 		}
 	}
 });

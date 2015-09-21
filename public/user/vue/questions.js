@@ -8,21 +8,25 @@ var q = new Vue({
     },
     methods: {
         get_all: function(callback) {
-            $.get('../../questions/aspect/' + a.current_aspect_id, function(db_questions) {
+            $.ajax({
+                    url: '../../questions/aspect/' + a.current_aspect_id,
+                    cache: false
+                })
+                .done(function(db_questions) {
 
-                var tmp = db_questions.map(function(question, i, arr) {
-                    question.id = question._id;
-                    question.answer = '';
-                    question.number = i + 1;
-                    return question;
+                    var tmp = db_questions.map(function(question, i, arr) {
+                        question.id = question._id;
+                        question.answer = '';
+                        question.number = i + 1;
+                        return question;
+                    });
+
+                    q.questions = tmp;
+
+                    // console.log(tmp);
+
+                    callback();
                 });
-
-                q.questions = tmp;
-
-                // console.log(tmp);
-
-                callback();
-            });
         },
         pickYes: function(id) {
 
@@ -31,6 +35,7 @@ var q = new Vue({
             $.ajax({
                     url: '../../users/' + global_user_id + '/answer',
                     method: 'PUT',
+                    cache: false,
                     data: {
                         answer: 'Yes',
                         question_id: id,
@@ -58,6 +63,7 @@ var q = new Vue({
             $.ajax({
                     url: '../../users/' + global_user_id + '/answer',
                     method: 'PUT',
+                    cache: false,
                     data: {
                         answer: 'No',
                         question_id: id,

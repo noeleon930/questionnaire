@@ -9,17 +9,21 @@ var prg = new Vue({
 		aspect_total_num: 0
 	},
 	compiled: function() {
-		$.get('../../questions', function(db_questions) {
+		$.ajax({
+				url: '../../questions',
+				cache: false
+			})
+			.done(function(db_questions) {
 
-			setTimeout(function() {
-				prg.total_num = db_questions
-					.filter(function(question) {
-						return ($.inArray(question.aspect, group_permission) != -1);
-					})
-					.length;
-			}, 300);
+				setTimeout(function() {
+					prg.total_num = db_questions
+						.filter(function(question) {
+							return ($.inArray(question.aspect, group_permission) != -1);
+						})
+						.length;
+				}, 300);
 
-		});
+			});
 	},
 	methods: {
 		total_pc: function() {
@@ -39,6 +43,7 @@ var prg = new Vue({
 			$.ajax({
 					url: '../../users/' + global_user_id + '/total_p',
 					method: 'PUT',
+					cache: false,
 					data: {
 						total_p: prg.total_p
 					}
@@ -73,6 +78,7 @@ var prg = new Vue({
 				$.ajax({
 						url: '../../users/' + global_user_id + '/completed_aspects',
 						method: 'PUT',
+						cache: false,
 						data: {
 							aspects_json_string: JSON.stringify((u.aspects_json != undefined || u.aspects_json.length > 0) ? (function() {
 								var aaa = u.aspects_json;
