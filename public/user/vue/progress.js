@@ -31,6 +31,11 @@ var prg = new Vue({
 				this.total_p = 0;
 			}
 
+			$('#jquery-total').text('總進度 : ' + this.total_user_selected + ' / ' + prg.total_num);
+
+			$('#jquery-total-p').text(this.total_p + '%');
+			$('#jquery-total-p').css('width', this.total_p + '%');
+
 			$.ajax({
 					url: '../../users/' + global_user_id + '/total_p',
 					method: 'PUT',
@@ -58,6 +63,11 @@ var prg = new Vue({
 
 			this.aspect_selected_num = tmp;
 			this.aspect_total_num = q.questions.length;
+
+			$('#jquery-aspect').text('構面進度 : ' + this.aspect_selected_num + ' / ' + this.aspect_total_num);
+
+			$('#jquery-aspect-p').text(this.aspect_p + '%');
+			$('#jquery-aspect-p').css('width', this.aspect_p + '%');
 
 			if (this.aspect_p == 100 || this.aspect_p == 100.0 || this.aspect_p == '100' || this.aspect_p == '100.0') {
 				$.ajax({
