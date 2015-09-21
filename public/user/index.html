@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../css/foundation.css" />
     <link rel="stylesheet" href="../css/app.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--[if lt IE 12]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+        <script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+        <script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+        <script>alert('IE!');</script>
+    <![endif]-->
     <script>
     var global_query = (function() {
         var vars = [],
@@ -128,7 +135,7 @@
                             <div class="small-5 columns">
                                 <div class="panel callout" style="padding: 5px; margin-bottom: 0px; height: 62px">
                                     <span>總進度 : {{total_user_selected}} / {{total_num}} </span>
-                                    <div class="progress small success radius" style="padding:0px;height: 49%; background-color: #FFFFFF">
+                                    <div class="progress small success" style="padding:0px;height: 49%; background-color: #FFFFFF">
                                         <span class="meter" v-style="width: total_p + '%', text-align: 'center'">{{total_p}}%</span>
                                     </div>
                                 </div>
@@ -136,7 +143,7 @@
                             <div class="small-5 columns">
                                 <div class="panel callout" style="padding: 5px; margin-bottom: 0px; height: 62px">
                                     <span>構面進度 : {{aspect_selected_num}} / {{aspect_total_num}} </span>
-                                    <div class="progress small success radius" style="padding:0px;height: 49%; background-color: #FFFFFF">
+                                    <div class="progress small success" style="padding:0px;height: 49%; background-color: #FFFFFF">
                                         <span class="meter" v-style="width: aspect_p + '%', text-align: 'center'">{{aspect_p}}%</span>
                                     </div>
                                 </div>
@@ -154,6 +161,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../js/sugar.min.js"></script>
+    <script src="../js/jquerymy-1.1.9.min.js"></script>
     <script src="../js/vue.min.js"></script>
     <script src="../js/foundation.min.js"></script>
     <!-- // <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script> -->
