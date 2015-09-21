@@ -44,7 +44,7 @@ var prg = new Vue({
 					}
 				})
 				.done(function(data) {
-					console.log('done_updating total_p' + data);
+					// console.log('done_updating total_p' + data);
 				});
 		},
 		aspect_pc: function() {
@@ -82,7 +82,7 @@ var prg = new Vue({
 						}
 					})
 					.done(function(data) {
-						console.log('done_updating completed_aspects' + data);
+						// console.log('done_updating completed_aspects' + data);
 						$('#aspect-' + a.current_aspect_id).addClass('success');
 					});
 			}

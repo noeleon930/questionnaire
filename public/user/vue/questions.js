@@ -26,7 +26,7 @@ var q = new Vue({
         },
         pickYes: function(id) {
 
-            console.log('click yes!');
+            // console.log('click yes!');
 
             $.ajax({
                     url: '../../users/' + global_user_id + '/answer',
@@ -38,7 +38,7 @@ var q = new Vue({
                     }
                 })
                 .done(function(data) {
-                    console.log('done_adding' + data);
+                    // console.log('done_adding' + data);
                     $('#yes-' + id).prop("checked", true);
                     $('#no-' + id).prop("checked", false);
 
@@ -53,7 +53,7 @@ var q = new Vue({
         },
         pickNo: function(id) {
 
-            console.log('click no!');
+            // console.log('click no!');
 
             $.ajax({
                     url: '../../users/' + global_user_id + '/answer',
@@ -65,7 +65,7 @@ var q = new Vue({
                     }
                 })
                 .done(function(data) {
-                    console.log('done_adding' + data);
+                    // console.log('done_adding' + data);
                     $('#yes-' + id).prop("checked", false);
                     $('#no-' + id).prop("checked", true);
 
