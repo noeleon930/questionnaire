@@ -6,35 +6,35 @@ var csv = require('csv-parser');
 var aspect_id_pair = [{
 	"_id": "z"
 }, {
-	"_id": '55fc65525eff51287fed18c9',
+	"_id": "55e4fa5013248c360f4e9f9d",
 	"name": "願景及策略",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18ca',
+	"_id": "55e4fa7e13248c360f4e9fa0",
 	"name": "公司治理",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18cb',
+	"_id": "55e4fa8a13248c360f4e9fa2",
 	"name": "組織人力",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18cc',
+	"_id": "55e4fa9113248c360f4e9fa4",
 	"name": "科技應用",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18cd',
+	"_id": "55e4fa9913248c360f4e9fa6",
 	"name": "資料分析",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18ce',
+	"_id": "55e4fa9d13248c360f4e9fa8",
 	"name": "數位風險管理",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18cf',
+	"_id": "55e4faa613248c360f4e9faa",
 	"name": "客戶經營",
 	"comment": ""
 }, {
-	"_id": '55fc65525eff51287fed18d0',
+	"_id": "55e4faad13248c360f4e9fac",
 	"name": "通路體驗",
 	"comment": ""
 }].map(function(item, i, arr) {
@@ -42,7 +42,6 @@ var aspect_id_pair = [{
 });
 
 console.log(aspect_id_pair);
-
 
 fs.createReadStream('1.csv')
 	.pipe(csv({

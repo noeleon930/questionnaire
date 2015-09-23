@@ -1,75 +1,49 @@
 subject-English	題目-Chinese	Answer-English	答案-Chinese	構面
-There is a consolidated portfolio where all changes can be managed and tracked to the digital platform regardless of the source of the change.	各業務是否透過集中的數位管理平台來進行管理與追蹤。	Yes/True、No/False	是、否	變革能力
-The digital platform permits business enabled change without the involvement of IT for content and reference data changes.	公司的數位化平台具彈性，能由業務單位直接依據需求調整，不需透過IT調整內容或相關資料。	Yes/True、No/False	是、否	變革能力
-All change follows a common methodology with no lighter levels of governance for smaller, less significant changes.	公司內有一致的變更管理方法來處理不同層級與規模的變更。	Yes/True、No/False	是、否	變革能力
+There is a consolidated portfolio where all changes can be managed and tracked to the digital platform regardless of the source of the change.	公司是否透過集中的數位管理平台來進行業務管理與追蹤。	Yes/True、No/False	是、否	變革能力
+The digital platform permits business enabled change without the involvement of IT for content and reference data changes.	公司的數位平台具彈性，能由業務單位直接依據需求調整，不需透過IT調整內容或相關資料。	Yes/True、No/False	是、否	變革能力
+All change follows a common methodology with no lighter levels of governance for smaller, less significant changes.	公司內有一致的系統變更管理方法來處理不同層級、規模的變更。	Yes/True、No/False	是、否	變革能力
 It is possible to deploy changes into production quickly at low cost in order to run pilots with subsets of customers.	公司能以快速且低成本的方式調整產品內容，以滿足特定客群。	Yes/True、No/False	是、否	變革能力
-The majority of services are automatically tested as part of the software build process.	公司在建置軟體過程中，多數的服務內容都經過自動化測試。	Yes/True、No/False	是、否	變革能力
 The majority of services are automatically tested as part of the route to live release process.	公司大部份的服務已經過自動化的測試，此為服務上線計畫中的一環。	Yes/True、No/False	是、否	變革能力
-There are ringfenced teams of designers, engineers, testers, project managers etc. for implementing change in digital.	公司有專責的數位化團隊協助執行數位化變革，包括設計師、工程師、測試人員以及專案經理等。	Yes/True、No/False	是、否	企業一致化
+There are ringfenced teams of designers, engineers, testers, project managers etc. for implementing change in digital.	公司有專責的數位團隊協助執行數位變革，包括設計師、工程師、測試人員以及專案經理等。	Yes/True、No/False	是、否	企業一致化
 The flow of work into technology delivery teams is regulated and agreed with the business to keep the team sizes relatively constant or within tolerable growth rates.	技術團隊所執行之工作，係依據業務內容調整，使團隊規模能相對穩定的成長。	Yes/True、No/False	是、否	企業一致化
-The release of code into production is an infrequent and painful process.	系統程式碼上版至正式環境的頻率很低且流程困難。	Yes/True、No/False	是、否	企業一致化
-When a project needs new infrastructure, this typically forms the critical path for deployment.	在建置數位化專案的過程中，是否導入新的資訊設備為至關重要的議題。	Yes/True、No/False	是、否	企業一致化
-There is a reliable and repeatable process for commissioning changes on downstream systems within the organisation.	公司面對下游系統的變化，能夠以可信賴和重複性的流程來應對。	Yes/True、No/False	是、否	企業一致化
-There is the ability to scale your delivery model to cope with peaks in demand and use alternative delivery models where appropriate.	公司在面對高峰期的需求時，具有擴充產能的能力，並且在適當時機能使用替代執行方案。	Yes/True、No/False	是、否	企業一致化
+When a project needs new infrastructure, this typically forms the critical path for deployment.	在建置數位專案的過程中，是否導入新的資訊設備是重要的考量。	Yes/True、No/False	是、否	企業一致化
+There is a reliable and repeatable process for commissioning changes on downstream systems within the organisation.	公司面對數位應用系統的變化，能夠以可信賴和重複性的流程來應對。	Yes/True、No/False	是、否	企業一致化
+There is the ability to scale your delivery model to cope with peaks in demand and use alternative delivery models where appropriate.	公司在面對需求高峰期時，具有擴充產能的能力，並且在適當時機能使用替代執行方案。	Yes/True、No/False	是、否	企業一致化
 Cost and time estimates are reliable and they typically improve as the project proceeds through the development lifecycle.	公司可以準確估計成本和時間，且通常會隨著專案的進行益加改善。	Yes/True、No/False	是、否	企業一致化
-There are regular reviews of the technology delivery lifecycle to understand problems and implement improvements to the processes.	公司能定期進行審視專案是位於數位化發展的哪個階段，以瞭解問題並進行改善。	Yes/True、No/False	是、否	企業一致化
-Project reporting provides leading indicators of milestones that are going to be missed and result in few surprises with regard to slipped project dates.	在數位化的專案報告中，在定期指標外另設有預警指標，以便在延宕發生時能及早因應。	Yes/True、No/False	是、否	企業一致化
-The Head of Digital can draw the high level architecture of digital services.	數位化部門的高階主管，具有規劃企業數位化服務架構的能力。	Yes/True、No/False	是、否	管理
-The Head of Architecture for Digital can describe the business strategy with regard to the digital channel.	數位設備部門的高階主管，可具體描繪出企業的數位化通路策略。	Yes/True、No/False	是、否	管理
-The service received from IT represents value for money.	IT部門所提供的數位化服務，其價值高於投入成本。	Yes/True、No/False	是、否	管理
-In a typical project meeting, an outsider would be able to establish who in the project team fulfils a business role and who fulfils a technology role.	在數位化專案會議中，可以清楚的分辨出業務端與資訊科技端之專責人員。	Yes/True、No/False	是、否	管理
-The process for delivering new components that require both business and technology input are well understood and mature.	公司內部已建立業務端與資訊科技端共同執行新業務之合作模式。	Yes/True、No/False	是、否	管理
-Requirements are documented without technology input and handed over to Technology for them to implement.	公司對於資訊科技之資源投入及導入，已進行需求確認。	Yes/True、No/False	是、否	管理
+There are regular reviews of the technology delivery lifecycle to understand problems and implement improvements to the processes.	公司能定期進行審視專案是位於數位發展的哪個階段，以瞭解問題並進行改善。	Yes/True、No/False	是、否	企業一致化
+Project reporting provides leading indicators of milestones that are going to be missed and result in few surprises with regard to slipped project dates.	在數位專案報告中，在定期指標外另設有預警指標，以便在延宕發生時能及早因應。	Yes/True、No/False	是、否	企業一致化
+The Head of Digital can draw the high level architecture of digital services.	數位部門的高階主管，具有規劃數位服務架構的能力。	Yes/True、No/False	是、否	管理
+The service received from IT represents value for money.	IT部門所提供的數位服務，其價值高於投入成本。	Yes/True、No/False	是、否	管理
+In a typical project meeting, an outsider would be able to establish who in the project team fulfils a business role and who fulfils a technology role.	在數位專案會議中，可以清楚的分辨出業務端與資訊端之專責人員。	Yes/True、No/False	是、否	管理
+The process for delivering new components that require both business and technology input are well understood and mature.	公司內部已建立業務端與資訊端共同執行新業務之合作模式。	Yes/True、No/False	是、否	管理
 Ideas for new or improved business propositions have originated from within the technology function.	公司從資訊科技中擷取到發展新業務的創新想法及建議。	Yes/True、No/False	是、否	管理
-Technology stakeholders are involved in the early stage development of business propositions, helping to shape propositions into deliverable projects.	資訊科技相關人員參與數位化策略初期的議題討論，並且幫助企業將重要的議題轉換成實際可執行的專案。	Yes/True、No/False	是、否	管理
-Business and technology teams are co-located.	業務和技術團隊在同一個工作環境下合作。	Yes/True、No/False	是、否	管理
-Does a typical technology resource working on Digital project understand the broad business strategy of the Digital business and how their project contributes to this?	在數位化專案當中，資訊科技團隊是否充分了解公司於數位化業務推動過程之經營策略，以及了解其團隊可貢獻之處?	Yes/True、No/False	是、否	管理
-There is a documented strategy for how mobile services are to be built/deployed with regard to which platforms, native, hybrid, web etc.	公司已發展行動加值服務，包含：所需的相關平台、軟硬體等資源。	Yes/True、No/False	是、否	平台策略
-The mobile strategy is regularly reviewed in the context of customer usage, market trends etc.	公司定期檢視數位化行動策略，確認是否符合市場趨勢與消費者的使用習慣。	Yes/True、No/False	是、否	平台策略
-Executives understand the mobile platform choices that have been made and the speed of change within the mobile ecosystem.	高階主管已知悉公司建置行動平台之策略，並了解到行動化之趨勢變遷。	Yes/True、No/False	是、否	平台策略
-There is a documented test strategy for mobile and the test coverage aligns with the risk appetite of the business.	公司針對數位化，進行企業風險胃納測試。	Yes/True、No/False	是、否	平台策略
+Technology stakeholders are involved in the early stage development of business propositions, helping to shape propositions into deliverable projects.	資訊相關人員參與數位策略初期的議題討論，並且幫助企業將重要的議題轉換成實際可執行的專案。	Yes/True、No/False	是、否	管理
+Business and technology teams are co-located.	業務和資訊團隊在同一個工作環境下合作。	Yes/True、No/False	是、否	管理
+Does a typical technology resource working on Digital project understand the broad business strategy of the Digital business and how their project contributes to this?	在數位專案當中，資訊團隊是否充分了解公司於數位業務推動的經營策略，以及了解其團隊可貢獻之處。	Yes/True、No/False	是、否	管理
+There is a documented strategy for how mobile services are to be built/deployed with regard to which platforms, native, hybrid, web etc.	公司已發展行動加值服務，包含：相關平台、軟硬體等資源。	Yes/True、No/False	是、否	平台策略
+The mobile strategy is regularly reviewed in the context of customer usage, market trends etc.	公司定期檢視數位行動策略，確認是否符合市場趨勢與消費者的使用習慣。	Yes/True、No/False	是、否	平台策略
+Executives understand the mobile platform choices that have been made and the speed of change within the mobile ecosystem.	高階主管已掌握行動平台建置方案，並了解到行動化趨勢變遷。	Yes/True、No/False	是、否	平台策略
+There is a documented test strategy for mobile and the test coverage aligns with the risk appetite of the business.	公司針對數位化已進行風險胃納量測試。	Yes/True、No/False	是、否	平台策略
 The use of cloud services has been considered and a position with regard to which services will or will not utilise the cloud have been documented.	公司對於運用雲端服務，以及哪類服務將使用雲端服務，都有進行考慮及決策。	Yes/True、No/False	是、否	平台策略
-For internally hosted services, there is a high degree of infrastructure automation.	內部服務系統已高度自動化處理。	Yes/True、No/False	是、否	管理
-For internally hosted services, there is consistency with regard to hardware/operating system and a clear future strategy.	針對內部服務系統，硬體/作業系統和未來的策略具有一致性。	Yes/True、No/False	是、否	管理
-The cost of ownership, agility and security characteristics of the chosen server side technology platform is understood with regard to the potential alternatives.	公司目前所使用的主機端平台的成本、敏感性和安全性的風險，已與其他替代選擇進行瞭解及比較，並做過相關評估。	Yes/True、No/False	是、否	平台策略
+For internally hosted services, there is a high degree of infrastructure automation.	公司內部服務系統已高度自動化處理。	Yes/True、No/False	是、否	管理
+For internally hosted services, there is consistency with regard to hardware/operating system and a clear future strategy.	針對公司內部服務系統，硬體/作業系統和未來策略具有一致性。	Yes/True、No/False	是、否	管理
 The server-side technology platform strategy is regularly reviewed to ensure the decisions do not become outdated.	公司定期審視伺服器端科技平台的策略建置方向，以確保相關決策不會過於陳舊。	Yes/True、No/False	是、否	平台策略
-It is possible to add additional capacity to the existing infrastructure within a 3 month lead time.	公司如欲擴充現有的數位化設備，可在3個月內完成相關準備工作。	Yes/True、No/False	是、否	管理
-There is a capacity planning function with clear accountability for ensuring there is sufficient capacity to run the digital services at the predicted volumes.	公司有足夠能力的專職單位，負責達成數位化服務的預計業務量目標。	Yes/True、No/False	是、否	管理
-There is a capacity forecast for business volumes in 12 months time.	公司能針對未來12個月的業務量進行預測	Yes/True、No/False	是、否	管理
-All the potential sources of analytical data regarding customers and their usage of digital services are understood.	公司了解特定客群目標及其使用數位化服務的習慣。	Yes/True、No/False	是、否	平台策略
-There is a common platform where all of the analytical data sets can be combined to develop rich customer insights.	公司具有整合所有的分析資料以建立消費者完整的圖像和使用習性(客戶360度)的平台。	Yes/True、No/False	是、否	平台策略
-The data from your web analytics provider is available to be combined with internal analytical sources.	公司於外部網頁的分析資料能與內部分析資源與工具進行連結。 	Yes/True、No/False	是、否	平台策略
-The data within each potential data sources share common customer identifiers to allow data from different sources to be combined.	每個資料平台的顧客資料具有相同的格式，以便企業將不同來源的資料或數據進行整併。	Yes/True、No/False	是、否	平台策略
-There is a cloud strategy that clearly outlines cloud usage across the business.	有清楚的雲端策略引導公司運用其雲端系統中的資源。	Yes/True、No/False	是、否	雲端服務
-Is your cloud strategy understood by all relevant parties who use cloud across the business?	公司內使用雲端系統的相關同仁是否了解整體的雲端策略？	Yes/True、No/False	是、否	雲端服務
-Using cloud across your business is understood and there are mechanisms for interested parties to discover company policies and procedures.	公司內部認同雲端策略，並提供相關政策和程序說明供有興趣的同仁進一步了解。 	Yes/True、No/False	是、否	雲端服務
-There are a set of metrics to measure the effectiveness of cloud services and usage across the business.	公司具有檢視雲端服務於整個企業的效率和使用率的衡量指標。 	Yes/True、No/False	是、否	雲端服務
-The cloud strategy allows the business to track operational costs over a defined usage period.	雲端策略幫助企業得以追蹤特定期間內的營運成本。 	Yes/True、No/False	是、否	雲端服務
-Usage is tracked and then aligned with financial reporting tools to see a daily view on overall cloud usage costs.	公司每日檢視雲端系統的使用量及財務報告以估算使用雲端系統的成本 。	Yes/True、No/False	是、否	雲端服務
-The benefits of public, hybrid and private cloud are understood.	公司了解公開、綜合與私人雲端系統的優勢。 	Yes/True、No/False	是、否	雲端服務
-There is a documented back-up policy in relation to storing data in the cloud.	公司針對雲端系統中的數據儲存擬定了備份資料的策略。 	Yes/True、No/False	是、否	雲端服務
-Cloud is used to support Disaster Recovery plans.	公司運用雲端系統進行資料補救的備案計劃。 	Yes/True、No/False	是、否	雲端服務
-There are documented plans for how to manage current hosting centres in combination with cloud based solutions in the future.	公司透過將現有的管理單位和以雲端為基礎的解決方案結合，並進行文件化的建檔計畫。	Yes/True、No/False	是、否	雲端服務
-The procurement process includes the ability to purchase SaaS on a monthly pay as you go basis.	公司將每月是否有能力支付SaaS相關費用的能力納入採購流程的考量中。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-The procurement process includes the ability to reference SaaS as a category item.	公司採購流程將衡量SaaS是否可被使用，列為一個採購項目。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-There are clear guidelines on the risk and security issues relating to use of SaaS.	公司針對使用SaaS的風險和安全問題有明確的準則。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-A risk assessment is conducted against each SaaS product/service before purchase sign off.	公司在進行購買決策之前，針對SaaS的每個產品/服務進行風險的評估。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-A Total Cost of Ownership review is conducted on each SaaS product/service before purchase sign off.	公司在進行購買決策之前，針對SaaS的每個產品/服務進行成本的評估。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-There is an appropriate SaaS portfolio management process in place to reduce risk of duplicating purchases.	公司具有適當的SaaS產品管理流程以避免造成重複購買的風險。	Yes/True、No/False	是、否	軟體即服務(SaaS)
-The legal or commercial team have specific T&Cs for SaaS to enable contracts to be turned around quickly.	公司的律師或相關團隊熟悉SaaS特定的條款，使合約能快速簽訂。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-Functional teams can purchase SaaS products/services as and when they have a requirement.	公司允許各部門可依其需求購買SaaS產品/服務。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-The IT team can purchase SaaS products/services as and when they have a requirement from Functions or require products/services themselves.	公司允許IT部門可依其需求或依其支援之部門的需求購買SaaS產品/服務。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-Service Management (ITIL) processes allow for a rapid uptake of SaaS products/services.	SaaS產品/服務在服務管理（ITIL）流程能被快速的應用。 	Yes/True、No/False	是、否	軟體即服務(SaaS)
-Software changes can be deployed to production without any downtime or degradation of service to customers.	公司得直接進行數位化軟體的修改，不會對消費者數位化服務的使用狀況造成影響。 	Yes/True、No/False	是、否	服務品質
-Services are available 24/7 and 365 days a year for your customers to use.	公司全年提供數位化服務供消費者隨時享用。	Yes/True、No/False	是、否	服務品質
-In the event of a failure in a downstream system, digital services degrade gracefully keeping as much of the service up as possible.	當下游系統發生故障的情況時，數位化服務能降低其可能造成的影響及傷害。 	Yes/True、No/False	是、否	服務品質
-"At peak transaction volumes, in a disaster recovery scenario and with component failure in the active data centre, ""hot spots"" and when the system is likely to break are understood."	當數據中心於交易的高峰期發生故障情形時，公司對於危機應變方案以及系統可能損害的情形具有充分的了解。 	Yes/True、No/False	是、否	服務品質
-There has been a severity 1 incidents in the last 12 months when your services have experienced complete downtime for over than hour.	過去12個月中曾發生至少一件危機事件，使得公司的數位化系統故障超過一小時的時間。 	Yes/True、No/False	是、否	服務品質
+It is possible to add additional capacity to the existing infrastructure within a 3 month lead time.	公司如欲擴充現有的數位設備，可在預期期限內完成相關工作。	Yes/True、No/False	是、否	管理
+There is a capacity planning function with clear accountability for ensuring there is sufficient capacity to run the digital services at the predicted volumes.	公司有專職單位負責預計數位服務的業務目標。	Yes/True、No/False	是、否	管理
+There is a capacity forecast for business volumes in 12 months time.	公司能針對未來一年的業務量進行預測	Yes/True、No/False	是、否	管理
+All the potential sources of analytical data regarding customers and their usage of digital services are understood.	公司了解特定客群目標及其使用數位服務的習慣。	Yes/True、No/False	是、否	平台策略
+There is a common platform where all of the analytical data sets can be combined to develop rich customer insights.	公司具有整合所有的分析資料以建立消費者完整的圖像和使用習性的平台。	Yes/True、No/False	是、否	平台策略
+The data from your web analytics provider is available to be combined with internal analytical sources.	公司於外部網頁的資料能與內部分析工具進行連結。 	Yes/True、No/False	是、否	平台策略
+The data within each potential data sources share common customer identifiers to allow data from different sources to be combined.	每個顧客資料平台的具有相同的格式，以便企業將不同來源的資料或數據進行整併。	Yes/True、No/False	是、否	平台策略
+Software changes can be deployed to production without any downtime or degradation of service to customers.	公司得直接進行系統修改，不會對消費者數位服務的使用狀況造成影響。 	Yes/True、No/False	是、否	服務品質
+Services are available 24/7 and 365 days a year for your customers to use.	公司全年提供數位服務供消費者隨時享用。	Yes/True、No/False	是、否	服務品質
+In the event of a failure in a downstream system, digital services degrade gracefully keeping as much of the service up as possible.	當數位應用系統發生故障的情況時，數位服務能降低其可能造成的影響及傷害。 	Yes/True、No/False	是、否	服務品質
+"At peak transaction volumes, in a disaster recovery scenario and with component failure in the active data centre, ""hot spots"" and when the system is likely to break are understood."	當數據中心於交易高峰期發生故障情形時，公司對於危機應變方案以及系統可能損害的情形具有充分的了解。 	Yes/True、No/False	是、否	服務品質
+There has been a severity 1 incidents in the last 12 months when your services have experienced complete downtime for over than hour.	過去12個月中曾發生至少一件危機事件，使得公司的數位系統故障超過一小時的時間。 	Yes/True、No/False	是、否	服務品質
 A Disaster Recovery test has been executed in the last 3 months.	在過去3個月內，公司有進行危機補救測試。 	Yes/True、No/False	是、否	服務品質
 Real user transactions for availability and response times versus a realistic service level (< 1 second in most cases)are monitored and this is data available in real-time.	公司針對使用者購買時機的便利性和回應時間與當下服務品質進行及時的監控。 	Yes/True、No/False	是、否	服務品質
 User response times and other metrics describing the user experience is captured and tracked over time for trends in customer or software behaviour.	使用者的回應時間與消費者體驗能被定期追蹤，以檢視是否符合消費者使用軟體的習慣和市場趨勢。 	Yes/True、No/False	是、否	服務品質
 There is a representative Non Functional Test and/or Operational Testing environment in which complex production issues can be resolved.	公司模擬營運情形進行測試，以解決未來發生的複雜問題。 	Yes/True、No/False	是、否	服務品質
 Feedback from your production service (functional and non-functional defects, even low priority ones) is systematically and pro-actively fed back to development teams in order to improve the capability of the system.	公司建立一回饋系統，能將服務流程中產生的錯誤（包括各層級、各部門）主動地提供給開發團隊，以提高系統的效能。 	Yes/True、No/False	是、否	服務品質
-Support teams have operability levers they can apply in production to change the behaviour of the system, e.g. switches to disable functionality.	數位化支援團隊具有直接改變流程中系統設定的權限，如：關閉特定功能。 	Yes/True、No/False	是、否	管理
-Priority and budget is allocated to technology teams to optimise poor performance and resolve functional issues in production.	企業對於數位化技術團隊給予高度重視和預算分配，以優化其績效並解決其所面對的問題。 	Yes/True、No/False	是、否	管理
-Are there known production issues where poor performance or serious functional problems have been observed for > 3 months?	公司是否有效能不佳或是發生嚴重的系統問題，發生時間超過三個月?	Yes/True、No/False	是、否	管理
+Support teams have operability levers they can apply in production to change the behaviour of the system, e.g. switches to disable functionality.	數位資訊團隊具有直接改變流程中系統設定的權限，如：關閉特定功能。 	Yes/True、No/False	是、否	管理
+Priority and budget is allocated to technology teams to optimise poor performance and resolve functional issues in production.	企業對於數位資訊團隊給予高度重視和預算分配，以優化其績效並解決其所面對的問題。 	Yes/True、No/False	是、否	管理

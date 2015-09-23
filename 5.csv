@@ -1,43 +1,42 @@
 subject-English	題目-Chinese	Answer-English	答案-Chinese	構面
-Online performance is measured through data analytics sporadically.	公司使用資料分析評估虛擬通路的效益。	Yes/True、No/False	是、否	範圍
-Data analytics is considered to be a key competitive advantage.	公司認同資料分析是關鍵的競爭優勢。 	Yes/True、No/False	是、否	目標
-Data analytics is sponsored across every function within the business.	公司以跨部門的合作模式推動資料分析業務。 	Yes/True、No/False	是、否	目標
-Data analytics and online performance measurement is managed and executed as isolated test and learn initiatives.	公司以獨立的管理計畫和測試方式，對於資料分析和線上績效評量進行管理。 	Yes/True、No/False	是、否	目標
-Data analytics is implicit across the organisation and part of the business's DNA.	資料分析已深植於組織內部及公司文化中。	Yes/True、No/False	是、否	目標
-New initiatives, recommendations and supporting business cases are founded from the digital analytics capability.	公司運用分析能力進行新的數位化計畫與提案，並支援業務發展。	Yes/True、No/False	是、否	範圍
-The business's data analytics and online measurement informs the business strategy.	公司以資料分析結果為基礎制定業務策略。	Yes/True、No/False	是、否	範圍
-There is no set governance framework around how data analytics is used.	公司對於資料分析運用方式並無制式框架或限制。	Yes/True、No/False	是、否	目標
-Data analytics capability and performance is tracked based on ROI.	公司以投資報酬率來衡量資料分析的能力與表現	Yes/True、No/False	是、否	目標
-There is mandatory investment budget in place to ensure the business's data analytics capability is continually best in class.	公司持續投入預算與資源，以確保資料分析的領先地位。	Yes/True、No/False	是、否	目標
-The data analytics team are seen as a support team rather than a strategic business team.	公司的資料分析團隊被視為後勤支援單位而非業務策略單位。	Yes/True、No/False	是、否	目標
-Data analytics is viewed as a core capability required to deliver the business digital objectives.	資料分析被視為達成數位化目標的核心能力。	Yes/True、No/False	是、否	目標
-Data analytics is viewed as a core capability required to keep the business competitive.	資料分析被視為確保業務競爭力的核心能力。	Yes/True、No/False	是、否	目標
-The data analytics team is seen as the agent for change within the organisation.	資料分析團隊為擔負組織內變革的主要角色。	Yes/True、No/False	是、否	目標
-Data analytics is focused on improving marketing campaigns online.	公司運用資料分析結果進行線上行銷活動優化。	Yes/True、No/False	是、否	範圍
-Data analytics is used to improve and personalise the customer experience and the digital proposition.	公司運用資料分析進行客戶客製化體驗優化及數位化調整。	Yes/True、No/False	是、否	範圍
-Data analytics is used to improve the customer experience and relevance across all products and channels.	公司運用資料分析進行跨產品及通路的客戶體驗優化。	Yes/True、No/False	是、否	範圍
-Data analytics is viewed as the core capability to revolutionise the business.	資料分析被視為確保業務創新改革的核心能力。	Yes/True、No/False	是、否	目標
-Data analytics is only used to fulfil specific and ad hoc queries from senior management.	資料分析的結果僅用於滿足高階主管的特定需求。	Yes/True、No/False	是、否	範圍
-Data analysis outcomes are overruled or ignored if they do not support existing direction or opinions.	當與目前的業務方向不一致時，資料分析結果將被否決或忽略。	Yes/True、No/False	是、否	範圍
-The data analytics team tend to only focus on analysing specific online activity.	資料分析團隊往往僅專注於特定線上活動的分析。	Yes/True、No/False	是、否	範圍
-Data analytics is used across the whole organisation.	資料分析在公司組織內被廣泛運用。	Yes/True、No/False	是、否	範圍
-Data analytics is used to drive efficiencies across the digital business.	資料分析被運用於數位業務效率的提升。	Yes/True、No/False	是、否	範圍
-Data analytics us used to better integrate online and offline units.	公司透過資料分析協助整合線上與線下的業務單位應用。	Yes/True、No/False	是、否	範圍
-Data analytics is carried out on products and channels independently of each other.	資料分析被分別運用於產品或通路上。	Yes/True、No/False	是、否	範圍
-The business does not have dedicated analytics resource in place to undertake analytics.	公司業務單位沒有專責資料分析的人力。	Yes/True、No/False	是、否	資源
-Analytics resource is spread across the organisation with no single line of responsibility.	進行資料分析的人力散布於組織內部，但無專責單位負責。	Yes/True、No/False	是、否	資源
-Data analytics resource are empowered to make decisions and drive change off the back of insight.	資料分析人員能根據分析結果進行決策並且推動改革。	Yes/True、No/False	是、否	資源
-Data analytics resource are multi-disciplined, with a structure in place to effectively support analysis requirements across the whole business.	公司擁有全方位的資料分析人力資源，並能滿足企業內部全面性的資料分析需求。	Yes/True、No/False	是、否	資源
-Data analytics is structured for tactical and ad-hoc requests.	資料分析能夠提供為特定目定的策略規劃。	Yes/True、No/False	是、否	範圍
-There are clear roles and responsibilities for the data analytics team.	資料分析團隊有明確的角色與職責劃分。	Yes/True、No/False	是、否	資源
-The data analytics team are performance managed against clear objectives.	公司以績效導向管理資料分析團隊，而非僅給予目標。	Yes/True、No/False	是、否	資源
-The data analytics lead has the power to take action and drive change.	資料分析團隊的領導人有權進行決策並且推動改革。	Yes/True、No/False	是、否	資源
-The organisation outsources or uses out of the box web analytics capability to monitor performance.	公司以委外或者使用創新的分析工具監控網路績效。	Yes/True、No/False	是、否	工具、科技及資料整合
+Online performance is measured through data analytics sporadically.	公司使用數據分析評估線上通路的效益。	Yes/True、No/False	是、否	範圍
+Data analytics is considered to be a key competitive advantage.	公司認為數據分析是關鍵的競爭優勢。 	Yes/True、No/False	是、否	目標
+Data analytics is sponsored across every function within the business.	公司以跨部門的合作模式推動數據分析。 	Yes/True、No/False	是、否	目標
+Data analytics and online performance measurement is managed and executed as isolated test and learn initiatives.	數據分析和線上績效評量是以獨立測試和學習機制進行管理與執行。 	Yes/True、No/False	是、否	目標
+Data analytics is implicit across the organisation and part of the business's DNA.	數據分析已深植於公司組織內部及文化中。	Yes/True、No/False	是、否	目標
+New initiatives, recommendations and supporting business cases are founded from the digital analytics capability.	公司運用分析能力進行創新數位計畫與提案，並支援業務發展。	Yes/True、No/False	是、否	範圍
+The business's data analytics and online measurement informs the business strategy.	公司依據數據分析結果為制定業務策略的基礎。	Yes/True、No/False	是、否	範圍
+There is no set governance framework around how data analytics is used.	公司對於數據分析運用方式並無制式框架或限制。	Yes/True、No/False	是、否	目標
+Data analytics capability and performance is tracked based on ROI.	公司以投資報酬率來衡量數據分析的能力與表現	Yes/True、No/False	是、否	目標
+There is mandatory investment budget in place to ensure the business's data analytics capability is continually best in class.	公司持續投入預算與資源，以確保數據分析的領先地位。	Yes/True、No/False	是、否	目標
+The data analytics team are seen as a support team rather than a strategic business team.	公司的數據分析團隊被視為後勤支援單位而非業務策略單位。	Yes/True、No/False	是、否	目標
+Data analytics is viewed as a core capability required to deliver the business digital objectives.	數據分析被視為達成數位目標的核心能力。	Yes/True、No/False	是、否	目標
+Data analytics is viewed as a core capability required to keep the business competitive.	數據分析被視為確保業務競爭力的核心能力。	Yes/True、No/False	是、否	目標
+The data analytics team is seen as the agent for change within the organisation.	數據分析團隊為擔負組織內變革的主要角色。	Yes/True、No/False	是、否	目標
+Data analytics is focused on improving marketing campaigns online.	公司運用數據分析結果進行執行中行銷活動優化。	Yes/True、No/False	是、否	範圍
+Data analytics is used to improve and personalise the customer experience and the digital proposition.	公司運用數據分析進行客戶個人化體驗優化及調整。	Yes/True、No/False	是、否	範圍
+Data analytics is used to improve the customer experience and relevance across all products and channels.	公司運用數據分析進行跨產品及通路的客戶體驗優化。	Yes/True、No/False	是、否	範圍
+Data analytics is viewed as the core capability to revolutionise the business.	數據分析被視為確保業務創新改革的核心能力。	Yes/True、No/False	是、否	目標
+Data analytics is only used to fulfil specific and ad hoc queries from senior management.	數據分析的結果僅用於滿足高階主管的特定需求。	Yes/True、No/False	是、否	範圍
+Data analysis outcomes are overruled or ignored if they do not support existing direction or opinions.	當與目前的業務方向不一致時，數據分析結果將被否決或忽略。	Yes/True、No/False	是、否	範圍
+The data analytics team tend to only focus on analysing specific online activity.	數據分析團隊往往僅專注於特定線上活動的分析。	Yes/True、No/False	是、否	範圍
+Data analytics is used across the whole organisation.	數據分析在公司組織內被廣泛運用。	Yes/True、No/False	是、否	範圍
+Data analytics is used to drive efficiencies across the digital business.	數據分析被運用於數位業務效率的提升。	Yes/True、No/False	是、否	範圍
+Data analytics us used to better integrate online and offline units.	公司透過數據分析協助整合線上與線下的業務單位應用。	Yes/True、No/False	是、否	範圍
+Data analytics is carried out on products and channels independently of each other.	數據分析被分別運用於產品或通路上。	Yes/True、No/False	是、否	範圍
+The business does not have dedicated analytics resource in place to undertake analytics.	公司業務單位沒有專責數據分析的人力。	Yes/True、No/False	是、否	資源
+Analytics resource is spread across the organisation with no single line of responsibility.	進行數據分析的人力散布於組織內部，但無專責單位負責。	Yes/True、No/False	是、否	資源
+Data analytics resource are empowered to make decisions and drive change off the back of insight.	數據分析人員能根據分析結果進行決策並且推動改革。	Yes/True、No/False	是、否	資源
+Data analytics resource are multi-disciplined, with a structure in place to effectively support analysis requirements across the whole business.	公司擁有全方位的數據分析人力資源，並能滿足內部全面性的數據分析需求。	Yes/True、No/False	是、否	資源
+Data analytics is structured for tactical and ad-hoc requests.	數據分析能夠提供為特定目定的策略規劃。	Yes/True、No/False	是、否	範圍
+There are clear roles and responsibilities for the data analytics team.	數據分析團隊有明確的角色與職責劃分。	Yes/True、No/False	是、否	資源
+The data analytics team are performance managed against clear objectives.	公司以績效導向管理數據分析團隊，而非僅給予目標。	Yes/True、No/False	是、否	資源
+The organisation outsources or uses out of the box web analytics capability to monitor performance.	公司使用創新的分析工具監控網路績效。	Yes/True、No/False	是、否	工具、科技及資料整合
 Structured processes are in place to execute A/B testing and analytics.	公司以標準作業流程進行比較測試(A/B testing)與分析。	Yes/True、No/False	是、否	工具、科技及資料整合
-Data analytics is used to track and monitor activity performance by cost and ROI.	公司藉著對成本及投資報酬率進行資料分析，以追蹤和監控業務表現。	Yes/True、No/False	是、否	工具、科技及資料整合
-Data analytics is carried out using multiple integrated sources of data.	公司整合多元的資料來源進行資料分析。	Yes/True、No/False	是、否	工具、科技及資料整合
+Data analytics is used to track and monitor activity performance by cost and ROI.	公司藉著對成本及投資報酬率進行數據分析，以追蹤和監控業務表現。	Yes/True、No/False	是、否	工具、科技及資料整合
+Data analytics is carried out using multiple integrated sources of data.	公司整合多元的資料來源進行數據分析。	Yes/True、No/False	是、否	工具、科技及資料整合
 There is the capability to carry our predictive analytics.	公司具有預測分析的能力。 	Yes/True、No/False	是、否	工具、科技及資料整合
-There is the ability to carry out analysis to understand the individual lifetime value of their customers.	公司具有應用資料分析預測客戶未來帶來價值的能力。	Yes/True、No/False	是、否	工具、科技及資料整合
-Data analytics is used to optimise online marketing campaigns.	公司使用資料分析優化網路上的行銷活動。	Yes/True、No/False	是、否	工具、科技及資料整合
-Dashboards are used to effectively communicate the outcomes of data analysis.	公司使用數位儀表板有效呈現資料分析的結果。	Yes/True、No/False	是、否	工具、科技及資料整合
-Data analytics is used to carry out behavioural targeting and personalisation.	公司透過資料分析進行客戶行為分類並客製化服務。	Yes/True、No/False	是、否	工具、科技及資料整合
+There is the ability to carry out analysis to understand the individual lifetime value of their customers.	公司具有應用數據分析預測客戶未來帶來價值的能力。	Yes/True、No/False	是、否	工具、科技及資料整合
+Data analytics is used to optimise online marketing campaigns.	公司使用數據分析優化線上行銷活動。	Yes/True、No/False	是、否	工具、科技及資料整合
+Dashboards are used to effectively communicate the outcomes of data analysis.	公司使用數位儀表板有效呈現數據分析的結果。	Yes/True、No/False	是、否	工具、科技及資料整合
+Data analytics is used to carry out behavioural targeting and personalisation.	公司透過數據分析進行客戶行為分類並客製化服務。	Yes/True、No/False	是、否	工具、科技及資料整合

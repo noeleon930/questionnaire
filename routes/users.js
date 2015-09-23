@@ -84,7 +84,8 @@ router.get('/:id/reset_questions', function(req, res, next) {
 	var patched_user = {
 		$set: {
 			questions: [],
-			aspects_json_string: ''
+			aspects_json_string: '',
+			total_p: 0
 		}
 	};
 

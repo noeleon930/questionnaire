@@ -1,25 +1,21 @@
 subject-English	題目-Chinese	Answer-English	答案-Chinese	構面
-There is a high level of business awareness of digital risk management.	公司對數位化風險管理高度敏感。	Yes/True、No/False	是、否	風險管理
-There is a digital risk management escalation process in place.	公司已設置數位化風險管理升級流程。	Yes/True、No/False	是、否	風險管理
-There is a dedicated digital risk management budget in place.	公司已設置數位化風險管理專用預算。	Yes/True、No/False	是、否	風險管理
-There is a digital risk management training programme for employees.	公司已為員工設計數位化風險管理訓練課程。	Yes/True、No/False	是、否	風險管理
-There is no digital risk management team within the business.	公司內部缺乏數位化風險管理團隊。	Yes/True、No/False	是、否	風險管理
+There is a high level of business awareness of digital risk management.	公司對數位風險管理具高度意識。	Yes/True、No/False	是、否	風險管理
+There is a dedicated digital risk management budget in place.	公司已設置數位風險管理專用預算。	Yes/True、No/False	是、否	風險管理
+There is a digital risk management training programme for employees.	公司有為員工設計數位風險管理訓練課程。	Yes/True、No/False	是、否	風險管理
+There is no digital risk management team within the business.	公司內部缺乏數位風險管理團隊。	Yes/True、No/False	是、否	風險管理
 There are tools in operation to monitor negative sentiment online.	公司具備監測線上負面情緒的工具。	Yes/True、No/False	是、否	風險管理
-Employees understand standards and their application in terms of digital risk management.	公司員工明瞭數位化風險管理的標準與應用方式。	Yes/True、No/False	是、否	風險管理
-There is no specific digital risk management framework or equivalent in place.	公司缺乏具體的數位化風險管理架構或同等內容。	Yes/True、No/False	是、否	風險管理
-The leadership team have a strong understanding of digital risk management.	公司領導團隊對數位化風險管理有深入了解。	Yes/True、No/False	是、否	風險管理
-The organisation does not make use of the Cyber Security Information Sharing Partnership (CISP) platform.	公司不使用網路安全資訊分享合作夥伴關係（CISP）平台。	Yes/True、No/False	是、否	使用及授權管理
+Employees understand standards and their application in terms of digital risk management.	公司員工明瞭數位風險管理的標準與應用方式。	Yes/True、No/False	是、否	風險管理
+There is no specific digital risk management framework or equivalent in place.	公司缺乏具體的數位風險管理架構或同等內容。	Yes/True、No/False	是、否	風險管理
+The leadership team have a strong understanding of digital risk management.	公司高階主管對數位風險管理有深入了解。	Yes/True、No/False	是、否	風險管理
 There are clear SLAs in place and these are monitored for compliance as a standard.	公司具備明確的委外服務協議(SLA)，並以此為標準來進行監管。	Yes/True、No/False	是、否	使用及授權管理
 There are processes in place to detect inappropriate use of administrative access.	公司對於管理者權限的不當使用，有訂定偵測程序控管。	Yes/True、No/False	是、否	使用及授權管理
 Sensitive identity and credential information is held centrally.	公司集中管理敏感的個資與憑證資訊。 	Yes/True、No/False	是、否	使用及授權管理
 There is a centralised, automated access review process in place to eliminate redundancy.	系統權限覆核係採統一與自動化流程進行，以避免工作重複。	Yes/True、No/False	是、否	使用及授權管理
-"There is one ""executive"" level programme owner to take complete accountability and is empowered to make decisions."	由具「執行長」層級的主管擔任數位化計畫負責人，該主管享有制定決策的權力。	Yes/True、No/False	是、否	使用及授權管理
-Access and Authentication management is managed in an ad hoc way- there is no dedicated management team.	數位化權限和身份驗證的管理模式係隨意辦理，未指定專門的管理團隊負責。 	Yes/True、No/False	是、否	使用及授權管理
 Access Control processes are clearly documented.	權限管控流程有明確的書面紀錄。 	Yes/True、No/False	是、否	使用及授權管理
-Periodic testing is undertaken to validate that processes are being followed.	公司定期執行測試，以確認管控流程被確實遵守。	Yes/True、No/False	是、否	使用及授權管理
-Contingency plans are in place in the event of a crisis occurring.	當意外事故發生時有緊急應變計畫加以因應。 	Yes/True、No/False	是、否	緊急危機管理
+Periodic testing is undertaken to validate that processes are being followed.	公司定期執行測試，以確認風險管控流程被確實遵守。	Yes/True、No/False	是、否	使用及授權管理
+Contingency plans are in place in the event of a crisis occurring.	當意外事件發生時有緊急應變計畫加以因應。 	Yes/True、No/False	是、否	緊急危機管理
 Crisis preparedness audits are undertaken on a regular basis.	公司對於緊急應變計畫定期執行查核。	Yes/True、No/False	是、否	緊急危機管理
-Information about the incident is immediately dispersed through automated channels.	意外事故相關的資訊會透過自動化管道及時傳遞出去。	Yes/True、No/False	是、否	緊急危機管理
+Information about the incident is immediately dispersed through automated channels.	意外事件相關的資訊會透過自動化管道即時傳遞出去。	Yes/True、No/False	是、否	緊急危機管理
 Exercises and messaging workshops are undertaken to ensure the business is best prepared for a crisis.	公司固定舉辦演習或討論會，確保內部做好危機處理的完善準備。 	Yes/True、No/False	是、否	緊急危機管理
 "The organisation has a ""dark"" site that has critical emergency messaging that can go live once the incident occurs."	公司組織存在一「隱藏版」內部網站儲存重要應變資訊，可於緊急事故發生時立即啟用。	Yes/True、No/False	是、否	緊急危機管理
 The organisation has developed a crisis toolkit to ensure the business is best prepared.	公司組織已經建置緊急應變方案，確保其營運能維持良好應變狀態。 	Yes/True、No/False	是、否	緊急危機管理
