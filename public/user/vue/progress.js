@@ -50,6 +50,9 @@ var prg = new Vue({
 				})
 				.done(function(data) {
 					// console.log('done_updating total_p' + data);
+					if (prg.total_p >= 100.0) {
+						alert('您已經完成了，謝謝填答！');
+					}
 				});
 		},
 		aspect_pc: function() {

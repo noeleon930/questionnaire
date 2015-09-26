@@ -29,8 +29,12 @@
     </script>
     <script language="javascript" type="text/javascript">
     function closeWindow() {
-        window.open('', '_parent', '');
-        window.close();
+        if (confirm('您確定要離開嗎？')) {
+            window.open('', '_parent', '');
+            window.close();
+        } else {
+
+        }
     }
     </script>
     <script src="../js/vendor/modernizr.js"></script>
@@ -107,6 +111,18 @@
                                     <div class="small-12 columns">
                                         <a class="button expand" style="height:33px;margin-top:0px; margin-bottom:14px; padding:5px" onclick="startSystem()">開始填答</a>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="msg-panel" class="row" style="margin-top: 30px">
+                            <div class="small-12 columns">
+                                <div class="panel">
+                                    <p>親愛的{{name}}同仁，</p>
+                                    <p>邀請 您填答第一商業銀行數位成熟度問卷，請協助在 2015/10/8 前完成，</p>
+                                    <p>填寫方式：按線上指示逐一填答即可。</p>
+                                    <p>本問卷內容僅供統計，不涉個人工作，敬請放心填答，再次感謝 您的回饋！</p>
+                                    <p>如有任何填答疑難或問題，請以本郵件回覆給<a href="mailto:gracewang2@kpmg.com.tw">數位成熟度問卷小組</a>並簡述面臨問題，我們將盡速回覆您後續處理方式。
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -197,14 +213,16 @@
     function startSystem() {
         $('#content_part').removeClass('small-12');
         $('#content_part').addClass('small-9');
-        $('#aspects-columns').show(55, function() {
-            $('#questions-panel').show(55, function() {
-                $('#progress').show(55, function() {
-                    $('#startRow').hide(1, function() {
-                        $('#questions').css('height', $(window).height() * 47 / 100);
-                        setTimeout(function() {
-                            $('#aspects').css('height', $('#content_part').height() * 92 / 100);
-                        }, 55);
+        $('#msg-panel').hide(55, function() {
+            $('#aspects-columns').show(55, function() {
+                $('#questions-panel').show(55, function() {
+                    $('#progress').show(55, function() {
+                        $('#startRow').hide(1, function() {
+                            $('#questions').css('height', $(window).height() * 47 / 100);
+                            setTimeout(function() {
+                                $('#aspects').css('height', $('#content_part').height() * 92 / 100);
+                            }, 55);
+                        });
                     });
                 });
             });
