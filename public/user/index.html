@@ -28,6 +28,8 @@
     })();
     </script>
     <script language="javascript" type="text/javascript">
+    var entered = false;
+
     function closeWindow() {
         if (confirm('您確定要離開嗎？')) {
             window.open('', '_parent', '');
@@ -211,6 +213,7 @@
     </script>
     <script>
     function startSystem() {
+        entered = true;
         $('#content_part').removeClass('small-12');
         $('#content_part').addClass('small-9');
         $('#msg-panel').hide(55, function() {
