@@ -48,7 +48,7 @@ router.get('/users', json2xls.middleware, function(req, res, next) {
 				var tmp = user_rows.map(function(user, i, arr) {
 					return {
 						'員工編號': user.serial,
-						'連結': user._id,
+						'連結': 'http://140.119.164.155:1224/static/user?uid=' + user._id,
 						'姓名': user.name,
 						'單位名稱': user.department,
 						'職稱': user.place,

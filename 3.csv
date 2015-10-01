@@ -1,10 +1,6 @@
-subject-English	題目-Chinese	Answer-English	答案-Chinese	構面
-The organisation has a clear strategy for employee engagement with digital.	公司內部有清楚的策略來提升員工的數位能力。	Yes/True、No/False	是、否	員工參與數位化
-Employees are provided with regular updates regarding the benefits for using digital, via wide range of interactive channels.	公司員工可以定期透過多種互動管道，了解數位應用的好處。	Yes/True、No/False	是、否	員工參與數位化
-Employees are using digital technology to work cross-functionally.	員工可以透過數位技術來進行跨部門合作。 	Yes/True、No/False	是、否	員工參與數位化
-Growth via digital platforms has grown consistently in the past 5 years.	透過數位平台業務，使得過去5年的營收持續增長。 	Yes/True、No/False	是、否	員工參與數位化
-Digital is recognised as a strategic discipline by the senior leadership team.	高層領導團隊將數位化視為重要戰略方針。	Yes/True、No/False	是、否	數位化領導力
-There is an established Centre of Excellence considered responsible for digital capability planning, development and delivery.	公司已設置負責數位資源規劃、開發和執行的專責單位。 	Yes/True、No/False	是、否	架構及職責
-Functional leaders are assessed on the frequency of adoption of digital technologies within their area.	各部門主管會評估組織內部運用數位技術的程度。 	Yes/True、No/False	是、否	架構及職責
-All employees are encouraged to continuously consider opportunities for product and service innovation via digital.	企業鼓勵員工進行產品和服務的數位創新。 	Yes/True、No/False	是、否	員工參與數位化
-Senior management are accountable for increased digital adoption, monitored using clear performance targets.	高階主管負責提升數位應用，並透過明確績效目標進行管控。 	Yes/True、No/False	是、否	架構及職責
+subject-English	題目-Chinese	Answer-English	答案-Chinese	構面	FCB
+The organisation has a clear strategy for employee engagement with digital.	公司內部有清楚訓練計劃，來提升員工的數位技能。	Yes/True、No/False	是、否	員工參與數位化	V
+Employees are provided with regular updates regarding the benefits for using digital, via wide range of interactive channels.	公司已設立內部溝通平台，廣納員工對規劃中數位產品的意見，以達產品效益最適化。	Yes/True、No/False	是、否	員工參與數位化	V
+Functional leaders are assessed on the frequency of adoption of digital technologies within their area.	公司已設立管理機制，來收集中階主管(經理以上)對新數位產品的使用頻率。 	Yes/True、No/False	是、否	架構及職責	V
+Senior management are accountable for increased digital adoption, monitored using clear performance targets.	高階主管(處長以上)對上述使用頻率較低的中階主管，進行及時督導並訂定改善行動方案。 	Yes/True、No/False	是、否	架構及職責	V
+All employees are encouraged to continuously consider opportunities for product and service innovation via digital.	公司設立獎勵機制(如內部黑客松)，來鼓勵員工提供數位創新想法。 	Yes/True、No/False	是、否	員工參與數位化	V

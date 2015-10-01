@@ -80,7 +80,7 @@ var u = new Vue({
 							});
 						u.users = tmp2;
 
-						u.check_duplicate(true);
+						// u.check_duplicate(true);
 					}
 				});
 			});

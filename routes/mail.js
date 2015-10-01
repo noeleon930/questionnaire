@@ -44,19 +44,26 @@ router.get('/:id', function(req, res, next) {
 			var mailOptions = {
 				from: 'info@kpmg.tw',
 				to: rows.email,
-				subject: '邀請 您 在9/24前協助填答第一商業銀行數位成熟度問卷',
-				html: '<p>親愛的' + rows.name + '同仁，</p><p>邀請 您填答第一商業銀行數位成熟度問卷，請協助在 2015/9/24 前完成，</p><p>填寫方式：點選您的<a href="http://140.119.164.155:1224/static/user?uid=' + rows._id + '">個人連結</a>，按線上指示逐一填答即可。</p><p>本問卷內容僅供統計，不涉個人工作，敬請放心填答，再次感謝 您的回饋！</p><p>如有任何填答疑難或問題，請以本郵件回覆給<a href="mailto:gracewang2@kpmg.com.tw">數位成熟度問卷小組</a>並簡述面臨問題，我們將盡速回覆您後續處理方式。</p><p> </p> <p> </p> <p> </p>'
+				subject: '請於10月 8日前完成數位成熟度問卷',
+				html: '<p>親愛的' + rows.name + '同仁，</p>' +
+					'<p>為瞭解行內數位成熟度的現況，煩請撥冗填答KPMG規劃之數位成熟度問卷，並於10/08 (四)前完成。</p>' +
+					'<p>請點選<a href="http://140.119.164.155:1224/static/user?uid=' + rows._id + '">個人連結</a>，並按線上指示逐一填答。</p>' +
+					'<p>本問卷內容僅需您寶貴20分鐘，其內容僅供內部分析統計，作為行內數位策略規劃依據，您的寶貴意見將有助於行內順利推動數位轉型！</p>' +
+					'<p>如有任何填答或連線疑難，請以郵件聯絡<a href="mailto:gracewang2@kpmg.com.tw">數位成熟度問卷小組</a>，行內同仁將於收信後盡速回覆。</p>' +
+					'<p> </p> <p> </p> <p> </p>'
 			};
 
-			mail_transporter.sendMail(mailOptions, function(err, info) {
-				if (err) {
-					res.json({
-						'error': err
-					});
-				} else {
-					res.json(true);
-				}
-			});
+			setTimeout(function() {
+				mail_transporter.sendMail(mailOptions, function(err, info) {
+					if (err) {
+						res.json({
+							'error': err
+						});
+					} else {
+						res.json(true);
+					}
+				});
+			}, 100);
 
 		});
 });

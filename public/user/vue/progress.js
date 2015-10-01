@@ -51,7 +51,7 @@ var prg = new Vue({
 				.done(function(data) {
 					// console.log('done_updating total_p' + data);
 					if (prg.total_p >= 100.0 && entered == true) {
-						alert('您已經完成了，謝謝填答！');
+						alert('感謝您的填答，因為您的配合使得本行數位化發展更進一步，\n如確定完成請點選右上離開系統件離開本問卷。');
 					}
 				});
 		},
