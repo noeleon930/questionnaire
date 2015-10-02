@@ -37,33 +37,66 @@ router.get('/users', json2xls.middleware, function(req, res, next) {
 	// 		'x-sent': true
 	// 	}
 	// };
+	aspects.find({}).toArray(function(err, aspect_rows) {
+		questions.find({}).toArray(function(err, question_rows) {
+			groups.find({}).toArray(function(err, group_rows) {
+				users
+					.find({}, {
+						sort: '_id'
+					})
+					.toArray(function(err, user_rows) {
 
-	groups.find({}).toArray(function(err, group_rows) {
-		users
-			.find({}, {
-				sort: '_id'
+						var tmp = user_rows.map(function(user, i, arr) {
+								return {
+									'項次': i + 1,
+									'員工編號': user.serial,
+									'連結': 'http://140.119.164.155:1224/static/user?uid=' + user._id,
+									'姓名': user.name,
+									'單位名稱': user.department,
+									'職稱': user.place,
+									'電子信箱': user.email,
+									'群組': (group_rows.filter(function(g) {
+										if (g._id == user.group)
+											return true;
+										else
+											return false;
+									}))[0].name,
+									questions: user.questions,
+								};
+							})
+							.map(function(user, i, arr) {
+								var iii = 1;
+
+								var tmpUserQ = {};
+								user.questions.forEach(function(zzz) {
+									tmpUserQ[(zzz.question_id)] = zzz.answer;
+								});
+
+								aspect_rows.forEach(function(aaaa, i, arrrr) {
+									question_rows
+										.filter(function(qqqq) {
+											return qqqq.aspect == aaaa._id;
+										})
+										.forEach(function(qqqqq) {
+											if (tmpUserQ[qqqqq._id] == undefined || tmpUserQ[qqqqq._id] == null) {
+												user[('Q' + iii)] = '';
+												iii++;
+											} else {
+												user[('Q' + iii)] = (tmpUserQ[(qqqqq._id)] == 'Yes' ? 1 : 0);
+												iii++;
+											}
+										});
+								})
+
+								delete user.questions;
+
+								return user;
+							});
+
+						res.xls('users.xlsx', tmp);
+					});
 			})
-			.toArray(function(err, user_rows) {
-
-				var tmp = user_rows.map(function(user, i, arr) {
-					return {
-						'員工編號': user.serial,
-						'連結': 'http://140.119.164.155:1224/static/user?uid=' + user._id,
-						'姓名': user.name,
-						'單位名稱': user.department,
-						'職稱': user.place,
-						'電子信箱': user.email,
-						'群組': (group_rows.filter(function(g) {
-							if (g._id == user.group)
-								return true;
-							else
-								return false;
-						}))[0].name,
-					};
-				});
-
-				res.xls('users.xlsx', tmp);
-			});
+		})
 	});
 });
 
