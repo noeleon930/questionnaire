@@ -68,16 +68,16 @@ var u = new Vue({
 								}
 
 								return user;
-							})
-							.sort(function(u1, u2) {
-								if (u1.serial < u2.serial) {
-									return -1;
-								} else if (u1.serial > u2.serial) {
-									return 1;
-								} else {
-									return 0;
-								}
 							});
+							// .sort(function(u1, u2) {
+							// 	if (u1.serial < u2.serial) {
+							// 		return -1;
+							// 	} else if (u1.serial > u2.serial) {
+							// 		return 1;
+							// 	} else {
+							// 		return 0;
+							// 	}
+							// });
 						u.users = tmp2;
 
 						// u.check_duplicate(true);
