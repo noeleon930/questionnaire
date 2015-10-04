@@ -1,23 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="the_title"></title>
     <link rel="stylesheet" href="../css/foundation.css" />
     <link rel="stylesheet" href="../css/app.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="css/ie8.css">
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-        <script src="http://s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
-        <script src="http://html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-        <script src="../js/es5-shim.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+        <script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+        <script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+        <script>
+        if (false || !!document.documentMode) {
+            alert('此系統於IE8會有安全性問題，請使用IE9以上或 Chrome 或 Firefox');
+            window.open('', '_parent', '');
+            window.close();
+        }
+        </script>
     <![endif]-->
-    <script language="javascript" type="text/javascript">
+    <script>
     var global_query = (function() {
         var vars = [],
             hash;
@@ -42,7 +46,7 @@
         }
     }
     </script>
-    <script language="javascript" type="text/javascript" src="../js/vendor/modernizr.js"></script>
+    <script src="../js/vendor/modernizr.js"></script>
     <style type="text/css">
     html,
     body {
@@ -69,9 +73,9 @@
             <p> </p>
             <div class="panel callout" style="padding-bottom: 0px;">
                 <ul id="aspects" class="side-nav" style="padding-top: 0px">
-                    <!--  <li v-repeat="aspect in aspects" style="margin:0px">
+                    <li v-repeat="aspect in aspects" style="margin:0px">
                         <a id="aspect-{{aspect.id}}" class="button expand" v-on="click: select_aspect(aspect)" style="height:60px;margin-top:0px; margin-bottom:14px;">{{aspect.name}}</a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </div>
@@ -94,15 +98,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="small-12 columns">
-                                        <h5 id="jquery_department_name">單位 : </h5>
+                                        <h5>單位 : {{department}}</h5>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="small-6 columns">
-                                        <h5 id="jquery_name_name">姓名 : </h5>
+                                        <h5>姓名 : {{name}}</h5>
                                     </div>
                                     <div class="small-6 columns">
-                                        <h5 id="jquery_place_name">職稱 : </h5>
+                                        <h5>職稱 : {{place}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +126,7 @@
                         <div id="msg-panel" class="row" style="margin-top: 30px">
                             <div class="small-12 columns">
                                 <div class="panel">
-                                    <p id="jquery_msg_name_name">親愛的同仁，</p>
+                                    <p>親愛的{{name}}同仁，</p>
                                     <p>為瞭解行內數位成熟度的現況，煩請撥冗填答KPMG規劃之數位成熟度問卷，並於10/08 (四)前完成。</p>
                                     <p>本問卷內容僅需您寶貴20分鐘，其內容僅供內部分析統計，作為行內數位策略規劃依據，您的寶貴意見將有助於行內順利推動數位轉型！</p>
                                     <p>如有任何填答或連線疑難，請以郵件聯絡<a href="mailto:gracewang2@kpmg.com.tw">數位成熟度問卷小組</a>，將於收信後盡速回覆。
@@ -135,8 +139,8 @@
             </div>
             <div id="questions-panel" class="panel" style="margin-bottom: 0px; display:none">
                 <div id="questions" class="row" style="overflow-y: auto; overflow-x: hidden">
-                    <div id="_questions" class="small-12 columns">
-                        <!-- <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
+                    <div class="small-12 columns">
+                        <div id="question-{{question.id}}" class="row collapse" v-repeat="question in questions" style="padding-top:14px">
                             <div class="small-10 columns">
                                 <div class="panel" style="margin:0px; padding: 15px">
                                     <h5>{{question.number}}.&nbsp;&nbsp;{{question.content}}</h5>
@@ -158,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,63 +199,25 @@
             </div>
         </div>
     </div>
-    <script language="javascript" type="text/javascript" src="//code.jquery.com/jquery-1.11.3.js"></script>
-    <script language="javascript" type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <!-- // <script language="javascript" type="text/javascript" src="../js/sugar.min.js"></script> -->
-    <!-- // <script language="javascript" type="text/javascript" src="../js/jquerymy-1.1.9.min.js"></script> -->
-    <!-- // <script language="javascript" type="text/javascript" src="../js/vue.min.js"></script> -->
-    <script language="javascript" type="text/javascript" src="../js/foundation.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../js/sugar.min.js"></script>
+    <script src="../js/jquerymy-1.1.9.min.js"></script>
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/foundation.min.js"></script>
     <!-- // <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script> -->
-    <!--[if lt IE 9]>
-    <script type="text/javascript">
-    (function($) {
-        if (!Foundation.stylesheet) {
-            Foundation._style_element = $('<style></style>').appendTo('head')[0];
-            Foundation.stylesheet = Foundation._style_element.styleSheet;
-
-            if (Foundation.stylesheet) {
-                Foundation.stylesheet.cssRules = {
-                    length: 0
-                };
-
-                Foundation.stylesheet.insertRule = function(rule, index) {
-                    var media, mediaMatch, mediaRegex, namespace, ruleMatch, ruleRegex;
-                    mediaRegex = /^\s*@media\s*(.*?)\s*\{\s*(.*?)\s*\}\s*$/;
-                    mediaMatch = mediaRegex.exec(rule);
-                    media = '';
-
-                    if (mediaMatch) {
-                        media = '@media ' + mediaMatch[1] + ' ';
-                        rule = mediaMatch[2];
-                    }
-
-                    ruleRegex = /^\s*(.*?)\s*\{\s*(.*?)\s*\}\s*$/;
-                    ruleMatch = ruleRegex.exec(rule);
-                    namespace = '' + media + ruleMatch[1];
-                    rule = ruleMatch[2];
-
-                    return this.addRule(namespace, rule);
-                };
-            } else if (window.console) {
-                console.log('Could not fix Foundation CSS rules...');
-            }
-        }
-    })(jQuery);
-    </script>
-    <![endif]-->
-    <script language="javascript" type="text/javascript">
+    <script>
     $(document).foundation();
     </script>
-    <script language="javascript" type="text/javascript" src="jquery/users.js"></script>
-    <script language="javascript" type="text/javascript" src="jquery/aspects.js"></script>
-    <script language="javascript" type="text/javascript" src="jquery/questions.js"></script>
-    <script language="javascript" type="text/javascript" src="jquery/progress.js"></script>
-    <script language="javascript" type="text/javascript">
+    <script src="vue/users.js"></script>
+    <script src="vue/aspects.js"></script>
+    <script src="vue/questions.js"></script>
+    <script src="vue/progress.js"></script>
+    <script>
     $('#gotop').click(function() {
         $('#questions').scrollTop(0);
     });
     </script>
-    <script language="javascript" type="text/javascript">
+    <script>
     function startSystem() {
         entered = true;
         $('#content_part').removeClass('small-12');
@@ -272,23 +238,6 @@
         });
     }
     </script>
-    <script language="javascript" type="text/javascript">
-    $(document).ready(function() {
-        get_start_users();
-        get_start_aspects();
-        get_start_questions();
-        get_start_progress();
-    });
-    </script>
-    <!--[if lt IE 9]>
-        <div class="browsehappy">
-            <h2 style="margin-top:20px">
-                您正在使用<strong>非常老舊</strong>的瀏覽器，可能會遭遇不少安全性及效能上的問題，故請<a href="//browsehappy.com/?locale=en">更新您的瀏覽器</a>以改善您的使用體驗、效能及安全。(建議使用Google Chrome)
-            </h2>
-        </div>
-
-        <script src="..js/rem.min.js"></script>
-    <![endif]-->
 </body>
 
 </html>
